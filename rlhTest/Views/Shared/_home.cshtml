@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Index | RLH</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/css/layout.css" >
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+
+
+    <!-- NAVBAR STARTS HERE  -->
+    <div class="container-fluid border" style="height: 40em; ">
+        <nav class="navbar navbar-expand-lg navbar-light border" style=" ">
+            <a class="navbar-brand" href="#">
+                <img src="https://via.placeholder.com/300.png/09f/fff" width="35" height="35" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto"></ul>
+                <span class="navbar-text">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Packages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Raise A Query</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="">Sign Up</button>
+                        </li>
+                    </ul>
+                </span>
+            </div>
+        </nav>
+
+        <div class="container border" style="margin-top: 12em">
+            <h1>This is an Intriguing header</h1>
+            <h3>Add some more text to highlight your offer.</h3>
+            <select class="form-control form-control-lg">
+                <option>OPTION 1</option>
+                <option>OPTION 2</option>
+                <option>OPTION 3</option>
+                <option>OPTION 4</option>
+                <option>OPTION 5</option>
+            </select>
+
+        </div>
+
+    </div>
+
+    <!-- NAVBAR ENDS HERE  -->
+
+    <div>
+        @RenderBody()
+    </div>
+    <!-- footer starts here -->
+
+    <div class="container-fluid border" style="padding: 0">
+        <center>
+            <h1>
+                Ready to Start Planning?
+            </h1>
+            <h4>
+                Subscribe to our Newsletter and get the latest travel news and packages right in your inbox!
+            </h4>
+            <div class="container mt-3 p-5">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg" placeholder="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit">SUBSCRIBE</button>
+                    </div>
+                </div>
+            </div>
+        </center>
+        <div class="border" style="height: 12rem; ">
+            <img src="">
+        </div>
+    </div>
+
+
+    <footer class="page-footer font-small blue pt-4 pl-4 pr-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-3 mt-md-0 mt-3">
+                    <h5 class="text-uppercase">Red Letter Holidats</h5>
+                    <p>Unit No-12, Gold Souk Mall, 2nd Floor 1, 122002, Sushant Lok Phase I, Sector 43, Gurugram, Haryana </p>
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">RedLetter</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="#!">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 0</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Europe</a>
+                        </li>
+                        <li>
+                            <a href="#!">South East Asia</a>
+                        </li>
+                        <li>
+                            <a href="#!">Australia</a>
+                        </li>
+                        <li>
+                            <a href="#!">Middle East</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <h5 class="text-uppercase">Customer Space</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Helpdesk</a>
+                        </li>
+                        <li>
+                            <a href="#!">Terms & Conditions</a>
+                        </li>
+                        <li>
+                            <a href="#!">Legal</a>
+                        </li>
+                        <li>
+                            <a href="#!">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3" style="border-top: 0.1rem solid grey">
+            © 2019 Copyright:
+            <a href="#"> RedLetter Holidays Pvt Ltd</a>
+        </div>
+    </footer>
+
+    <!-- footer ends here -->
+
+</body>
+
+</html>

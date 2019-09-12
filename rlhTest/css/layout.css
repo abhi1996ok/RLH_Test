@@ -1,0 +1,230 @@
+﻿/*navbar required*/
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+}
+
+
+
+
+
+
+
+
+.ad-pad-trbl {
+    padding: 1em 13em 1em 13em; /*top right bottom left padding added*/
+}
+
+.carousel-control-next-icon {
+    background-image: url('img/next.png') !important;
+}
+
+.carousel-control-prev-icon {
+    background-image: url('img/prev.png') !important;
+}
+
+.text-top-left {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+.carousel-inner .contains {
+    width: 100%;
+    height: auto;
+}
+
+.carousel-indicators li {
+    background-color: black !important;
+}
+
+
+
+/*for star rating starts here*/
+
+.rating {
+    float: left;
+}
+
+    .rating:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+        clip: rect(0,0,0,0);
+    }
+
+    .rating:not(:checked) > label {
+        float: right;
+        width: 1em;
+        /* padding:0 .1em; */
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 300%;
+        /* line-height:1.2; */
+        color: #ddd;
+    }
+
+        .rating:not(:checked) > label:before {
+            content: '★ ';
+        }
+
+    .rating > input:checked ~ label {
+        color: dodgerblue;
+    }
+
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+        color: dodgerblue;
+    }
+
+    .rating > input:checked + label:hover,
+    .rating > input:checked + label:hover ~ label,
+    .rating > input:checked ~ label:hover,
+    .rating > input:checked ~ label:hover ~ label,
+    .rating > label:hover ~ input:checked ~ label {
+        color: dodgerblue;
+    }
+
+    .rating > label:active {
+        position: relative;
+        top: 2px;
+        left: 2px;
+    }
+
+
+
+/*for subscribe email*/
+.home-newsletter {
+    padding: 80px 0;
+    background: #f84e77;
+}
+
+    .home-newsletter .single {
+        max-width: 650px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+        .home-newsletter .single h2 {
+            font-size: 22px;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .home-newsletter .single .form-control {
+            height: 50px;
+            background: rgba(255, 255, 255, 0.6);
+            border-color: transparent;
+            border-radius: 20px 0 0 20px;
+        }
+
+            .home-newsletter .single .form-control:focus {
+                box-shadow: none;
+                border-color: #243c4f;
+            }
+
+        .home-newsletter .single .btn {
+            min-height: 50px;
+            border-radius: 0 20px 20px 0;
+            background: #243c4f;
+            color: #fff;
+        }
+
+
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+
+.col-item {
+    border: 1px solid #E1E1E1;
+    border-radius: 5px;
+    background: #FFF;
+}
+
+    .col-item .photo img {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .col-item .info {
+        padding: 10px;
+        border-radius: 0 0 5px 5px;
+        margin-top: 1px;
+    }
+
+    .col-item:hover .info {
+        background-color: #F5F5DC;
+    }
+
+    .col-item .price {
+        /*width: 50%;*/
+        float: left;
+        margin-top: 5px;
+    }
+
+        .col-item .price h5 {
+            line-height: 20px;
+            margin: 0;
+        }
+
+.price-text-color {
+    color: #219FD1;
+}
+
+.col-item .info .rating {
+    color: #777;
+}
+
+.col-item .rating {
+    /*width: 50%;*/
+    float: left;
+    font-size: 17px;
+    text-align: right;
+    line-height: 52px;
+    margin-bottom: 10px;
+    height: 52px;
+}
+
+.col-item .separator {
+    border-top: 1px solid #E1E1E1;
+}
+
+.clear-left {
+    clear: left;
+}
+
+.col-item .separator p {
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 10px;
+    text-align: center;
+}
+
+    .col-item .separator p i {
+        margin-right: 5px;
+    }
+
+.col-item .btn-add {
+    width: 50%;
+    float: left;
+}
+
+.col-item .btn-add {
+    border-right: 1px solid #E1E1E1;
+}
+
+.col-item .btn-details {
+    width: 50%;
+    float: left;
+    padding-left: 10px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+[data-slide="prev"] {
+    margin-right: 10px;
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9f3c45310b0c408f8b5cff7cc0597fc1" Name="Diagram1">
+        <EntityTypeShape EntityType="rlh_dataModel.activity_image_master" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.activity_master" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.activity_schedule_master" Width="1.5" PointX="7.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.booking_master" Width="1.5" PointX="8.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.city_master" Width="1.5" PointX="3" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.client_city_activity_master" Width="1.5" PointX="10.5" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.client_master" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.client_package_city_master" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.client_package_master" Width="1.5" PointX="8" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.destination_image_master" Width="1.5" PointX="3" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.destination_master" Width="1.5" PointX="0.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.favourite_master" Width="1.5" PointX="13.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.keyword_master" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.package_city_activity_master" Width="1.5" PointX="10.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.package_city_master" Width="1.5" PointX="5.25" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.package_master" Width="1.5" PointX="3" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.package_pick_month" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.priviledge" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.query_master" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.user_master" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="rlh_dataModel.priviledgeuser_relate" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="rlh_dataModel.actImage_AM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.activity_CM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.activitySchedule_AM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.clientCityAct_AM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.packCityAct_AM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.bookMaster_CUM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.bookMater_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.city_DM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.clientPackCity_CM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.packCityAct_CM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.packCityMaster_CM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.cilentCityAct_CPCM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.clientPack_CUM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.favourite_CUM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.query_CUM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.clientPackCity_CPM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.clientPack_DM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.clientPack_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.favouriate_CPM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.desImage_DM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.packMaster_DM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.facouriate_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.packCityMaster_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.packMonth_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.query_PM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.priUser_PV" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.priUser_UM" ManuallyRouted="false" />
+        <AssociationConnector Association="rlh_dataModel.keywordpackage_relate" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
