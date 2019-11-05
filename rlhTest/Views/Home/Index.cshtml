@@ -1,9 +1,36 @@
-﻿@model IEnumerable<rlhTest.Models.package_master>
-
+﻿@model List<rlhTest.Models.DataModel.package_master>
+<!-- Home page: Index view Element -->
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_home.cshtml";
 }
+<script>
+    function dataStore()
+    {
+        var array = @Html.Raw(Json.Encode(
+                   ((IEnumerable<rlhTest.Models.DataModel.package_master>)ViewBag.data).Select(dataS => new {
+                   Booking_Enabled_Flag = dataS.Booking_Enabled_Flag,
+                   Creation_Date = dataS.Creation_Date,
+                   Customization_Allowed_Flag = dataS.Customization_Allowed_Flag,
+                   C_PM_id = dataS.C_PM_id,
+                   No_of_Days = dataS.No_of_Days,
+                   Package_Description = dataS.Package_Description,
+                   Package_Name = dataS.Package_Name,
+                   Package_Price = dataS.Package_Price,
+                   Booking_Count = dataS.Booking_Count
+
+
+               })));
+        
+
+        window.localStorage.setItem("data", JSON.stringify(array));
+        alert("Yes!" + array);
+      
+
+    }
+    window.onload = dataStore();
+</script>
+
 
 <div class="container-fluid border" style="">
     <center>
@@ -18,288 +45,76 @@
     <div class="container-fluid border" style="padding-bottom: 1.5rem">
         <div id="demo" class="carousel slide" data-ride="carousel">
             <ul class="carousel-indicators " style="bottom: -2rem">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
+                @{
+                    var val1 = 0;
+                    var count1 = Model.Count();
+                    var listC1 = decimal.Ceiling(count1 / 3);
+                    for (int i = 0; i < listC1; i++)
+                    {
+                        <li data-target="#demo" data-slide-to=i></li>
+                    }
+
+                }
             </ul>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                 @{
+                    var val = 0;
+                    var count = Model.Count();
+                    var listC = decimal.Ceiling(count / 3);
+                    for (int i = 0; i < listC; i++)
+                    {
 
-                    <div class="row ad-pad-trbl">
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        if (i == 0)
+                        {
+                            <div class="carousel-item active">
 
-                </div>
-                <div class="carousel-item">
+                                <div class="row ad-pad-trbl">
+                                    @{
 
-                    <div class="row ad-pad-trbl">
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                        for (; val < Model.Count() && val < (3 * (i + 1)); val++)
+                                        {
+                                            @Html.Partial("packViewIndex", Model.ElementAt(val))
 
-                </div>
-                <div class="carousel-item">
+                                        }
 
-                    <div class="row ad-pad-trbl">
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                    }
                                 </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="col-item">
-                                <div class="photo">
-                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                                </div>
-                                <div class="info">
-                                    <div class="row">
-                                        <div class="price col-md-6">
-                                            <h5>
-                                                RHL TITLE
-                                            </h5>
-                                            <p>
-                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            </p>
-                                            <h5 class="price-text-color">
-                                                $199.99
-                                            </h5>
-                                        </div>
-                                        <div class="rating hidden-sm col-md-6">
-                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                            </i><i class="fa fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="carousel-item ">
+
+                                <div class="row ad-pad-trbl">
+                                    @{
+
+                                        for (; val < Model.Count() && val < (3 * (i + 1)); val++)
+                                        {
+                                            @Html.Partial("packViewIndex", Model.ElementAt(val))
+
+                                        }
+
+                                    }
+                                </div>
+
+                            </div>
+
+
+                        }
+
+                    }
+
+                }
+               
             </div>
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
         </div>
     </div>
 </div>
@@ -356,25 +171,25 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 border">
+            <div class="col-sm-6 border" onclick="location.href='@Url.Action("PackagesByKey", "Home")?str=rlh_offer'">
                 <img src="http://placehold.it/350x260" width="100%" height="100%" style="padding: 10px">
                 <div class="text-top-left" style="  ">SAMPLE TEXT</div>
             </div>
-            <div class="col-sm-6 border">
+            <div class="col-sm-6 border" onclick="location.href='@Url.Action("PackagesByKey", "Home")?str=rlh_diva'" >
                 <img src="http://placehold.it/350x260" width="100%" height="100%" style="padding: 10px">
                 <div class="text-top-left" style="  ">SAMPLE TEXT</div>
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-4 border">
+            <div class="col-sm-4 border" onclick="location.href='@Url.Action("PackagesByKey", "Home")?str=rlh_safari'" >
                 <img src="http://placehold.it/350x260" width="100%" height="100%" style="padding: 10px">
                 <div class="text-top-left" style="  ">SAMPLE TEXT</div>
             </div>
-            <div class="col-sm-4 border">
+            <div class="col-sm-4 border" onclick="location.href='@Url.Action("PackagesByKey", "Home")?str=rlh_family'">
                 <img src="http://placehold.it/350x260" width="100%" height="100%" style="padding: 10px">
                 <div class="text-top-left" style="  ">SAMPLE TEXT</div>
             </div>
-            <div class="col-sm-4 border">
+            <div class="col-sm-4 border" onclick="location.href='@Url.Action("PackagesByKey", "Home")?str=rlh_adventure'">
                 <img src="http://placehold.it/350x260" width="100%" height="100%" style="padding: 10px">
                 <div class="text-top-left" style="  ">SAMPLE TEXT</div>
             </div>
@@ -488,6 +303,8 @@
     </div>
 
 </div>
+
+
 
 
 

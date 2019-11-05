@@ -1,0 +1,40 @@
+﻿@model List<rlhTest.Models.destination_master>
+
+@{
+    ViewBag.Title = "VisaFree";
+    Layout = "~/Views/Shared/_home.cshtml";
+}
+
+<h2 style="align-content:center">Visa Free Country</h2>
+
+<table class="table">
+    <tr>
+        <th>
+           Destination Name
+        </th>
+        <th>
+            Latitude
+        </th>
+        <th>
+            Longitude
+        </th>
+      
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr  onclick="location.href='@Url.Action("PackagesByDest", "Home", new { id = item.C_DM_id})'">
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitude)
+        </td>
+       
+    </tr>
+}
+
+</table>

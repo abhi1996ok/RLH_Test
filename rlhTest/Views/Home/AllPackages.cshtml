@@ -1,0 +1,285 @@
+﻿@model List <rlhTest.Models.DataModel.package_master>
+<!--Package page No Filtered (All Package)-->
+@{
+
+    ViewBag.Title = "AllPackages";
+    Layout = "~/Views/Shared/_home.cshtml";
+}
+
+<div class="container-fluid border" style="">
+    <div class="container text-center mt-3">
+        <h5>
+            Confused Where To Go?
+        </h5>
+        <h3>
+            Here's where our Red LettersRecently Travelled
+        </h3>
+        <h6>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        </h6>
+    </div>
+    <div class="container-fluid border" style="padding-bottom: 1.5rem">
+            <div id="demo" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators " style="bottom: -2rem">
+                    @{
+                        var count1 = (decimal)ViewBag.count;
+                        var listC1 = decimal.Ceiling((decimal)count1 / (decimal)3);
+                        for (int i = 0; i < listC1; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <li data-target="#demo" data-slide-to=i class="active"></li>
+                            }
+                            else
+                            {
+                                <li data-target="#demo" data-slide-to=i></li>
+                            }
+
+                        }
+
+                    }
+
+                </ul>
+
+
+                <div class="carousel-inner">
+
+                                                        @*@{
+                                                var val = 0;
+                                                var count = (decimal)ViewBag.count;
+                                                var listC = decimal.Ceiling((decimal)count / (decimal)3);
+
+                                                for (int i = 0; i < listC; i++)
+                                                {
+                                                    if (i == 0)
+                                                    {*@
+                            <div class="carousel-item active">
+                                @*@{for(;val<ViewBag.cout;val++)}*@
+
+                                <div class="row ad-pad-trbl">
+                                    <div class="col-sm-4">
+                                        <div class="col-item" >
+                                            <div class="photo" onclick="location.href='@Url.Action("PackCont","Home", new {cont= "Europe" })'">
+                                                <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                <div>Europe </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    <div class="col-sm-4">
+                                        <div class="col-item" >
+                                            <div class="photo" onclick="location.href='@Url.Action("PackCont","Home", new { cont="Africa"})'">
+                                                <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                <div >Africa </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <div class="col-item" >
+                                            <div class="photo" onclick="location.href='@Url.Action("PackCont","Home",new {cont="America" })'">
+                                                <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                <div >America </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                    
+                                </div>
+                            </div>
+
+                                    <div class="carousel-item ">
+                                            <div class="row ad-pad-trbl">
+
+                                                    <div class="col-sm-4">
+                                                        <div class="col-item" >
+                                                            <div class="photo" onclick="location.href='@Url.Action("PackCont","Home",new { cont="Asia"})'">
+                                                                <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                                <div> Asia</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-4">
+                                                        <div class="col-item" >
+                                                            <div class="photo" onclick="location.href='@Url.Action("PackCont","Home" ,new { cont="North America"})'">
+                                                                <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                                <div>North America </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-sm-4">
+                                                            <div class="col-item" >
+                                                                <div class="photo" onclick="location.href='@Url.Action("PackCont","Home",new { cont="South America"})'">
+                                                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                                    <div>South America </div>
+                                                                </div>
+                                                            </div>
+                                                     </div>
+
+                        
+                                            </div>
+                                    </div>
+
+                                    <div class="carousel-item ">
+                                        <div class="row ad-pad-trbl">
+
+                                            <div class="col-sm-4">
+                                                <div class="col-item" >
+                                                    <div class="photo" onclick="location.href='@Url.Action("PackCont","Home",new { cont="Antartica"})'">
+                                                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                        <div>Antartica  </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="col-item" >
+                                                    <div class="photo" onclick="location.href='@Url.Action("PackCont","Home",new { cont="Australia"})'">
+                                                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                        <div > Australia</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                    
+
+
+
+
+
+
+              
+
+                                      <div>
+                                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                            <span class="carousel-control-prev-icon"></span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#demo" data-slide="next">
+                                            <span class="carousel-control-next-icon"></span>
+                                        </a>
+                                      </div>
+
+                </div>
+
+            </div>
+    </div>
+                        <div class="container text-center mt-5 mb-5">
+                            <h5>
+                                Let's find out who's planning as a
+                            </h5>
+                            <h3>
+                                <b>
+                                    I am travelling as a..
+                                </b>
+                            </h3>
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="card" style="width:">
+                                        <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                                        <div class="card-body">
+                                            <h4 class="card-title text-center">SOLO</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="card" style="width:">
+                                        <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                                        <div class="card-body">
+                                            <h4 class="card-title text-center">COUPLE</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="card" style="width:">
+                                        <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                                        <div class="card-body">
+                                            <h4 class="card-title text-center">FAMILY</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="card" style="width:">
+                                        <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                                        <div class="card-body">
+                                            <h4 class="card-title text-center">GROUP</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                                <div class="container border">
+                                    <div class="container text-center border">
+                                        <h2>
+                                            Search Results for You
+                                        </h2>
+                                    </div>
+                                                        <div class="row" style="padding: 1rem">
+                                                                        <div class="col-sm-3">
+                                                                            Plan Your Tour Date :
+                                                                        </div>
+                                                                        <div class="col-sm-6">
+                                                                            <!-- 				<div class="input-group">
+                                                                                                <input type="text" class="form-control form-control-sm" placeholder="Search" style="border-right: none">
+                                                                                                <div class="input-group-append">
+                                                                                                    <button class="btn btn-secondary btn-sm" type="button" style="background-color: transparent; border: 1px solid #CED4DA; border-left: none;">
+                                                                                                        <img src="assets\style\img\search.png" style="height: 0.8rem; width: 0.8rem">
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>	
+                                                                            -->
+                                                                                    <div class="row">
+                                                                                        <div class="col-sm-1">
+                                                                                            From
+                                                                                        </div>
+                                                                                        <div class="col-sm-5">
+                                                                                            <input type="date" class="form-control form-control-sm clearfix" id="pwd" placeholder="Enter Date" name="date">
+                                                                                        </div>
+                                                                                        <div class="col-sm-1">
+                                                                                            To
+                                                                                        </div>
+                                                                                        <div class="col-sm-5">
+                                                                                            <input type="date" class="form-control form-control-sm clearfix" id="pwd" placeholder="Enter Date" name="date">
+                                                                                        </div>
+                                                                                    </div>
+                                                                        </div>
+                                                                    <div class="col-sm-3">
+                                                                        <select class="form-control form-control-sm ">
+                                                                            <option>Sort by: Recommended</option>
+                                                                            <option>OPTION 2</option>
+                                                                            <option>OPTION 3</option>
+                                                                            <option>OPTION 4</option>
+                                                                            <option>OPTION 5</option>
+                                                                        </select>
+                                                                    </div>
+                                                        </div>
+
+
+                                                                        <div class="row">
+                                                                            <div class="col-sm-4 " style="padding: 0; border-top: 0.1rem solid #DEE2E6; ">
+                                                                                	@Html.Partial("filterView")			
+
+                                                                            </div>
+                                                                                        <div class="col-sm-8 border">
+                                                                                            <div class="row mt-3 mb-3" style="overflow:auto;">
+
+                                                                                                @for (int i = 1; i < Model.Count(); i += 2)
+                                                                                                {
+                                                                                                    <div class="col-sm-6">
+                                                                                                        @Html.Partial("packageView", Model.ElementAt(i - 1))
+                                                                                                    </div>
+                                                                                                    <div class="col-sm-6">
+                                                                                                        @Html.Partial("packageView", Model.ElementAt(i))
+                                                                                                    </div>
+                                                                                                }
+                                                                                            </div>
+                                                                                        </div>
+                                                                        </div>
+                                </div>
+</div>

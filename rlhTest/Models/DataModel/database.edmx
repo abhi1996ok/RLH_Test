@@ -1,0 +1,2025 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="rlh_dataModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="activity_image_master">
+          <Key>
+            <PropertyRef Name="&amp;AM" />
+          </Key>
+          <Property Name="&amp;AM" Type="int" Nullable="false" />
+          <Property Name="Image_URl" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="activity_master">
+          <Key>
+            <PropertyRef Name="@AM_id" />
+          </Key>
+          <Property Name="@AM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CM_id" Type="int" Nullable="false" />
+          <Property Name="Activity_Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Longitude" Type="double" />
+          <Property Name="Latitude" Type="double" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="activity_schedule_master">
+          <Key>
+            <PropertyRef Name="@ASM_id" />
+          </Key>
+          <Property Name="@ASM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;AM" Type="int" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Open_Time" Type="int" Nullable="false" />
+          <Property Name="Close_Time" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="booking_master">
+          <Key>
+            <PropertyRef Name="@BM_id" />
+          </Key>
+          <Property Name="@BM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CUM_id" Type="int" Nullable="false" />
+          <Property Name="Booking_Status" Type="int" Nullable="false" />
+          <Property Name="&amp;PM_id" Type="int" Nullable="false" />
+          <Property Name="Payment_Info" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Date_Of_Booking" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="city_master">
+          <Key>
+            <PropertyRef Name="@CM_id" />
+          </Key>
+          <Property Name="@CM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;Co_DM_id" Type="int" Nullable="false" />
+          <Property Name="City_Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Longitude" Type="double" />
+          <Property Name="Latitude" Type="double" />
+          <Property Name="Activity_Hours" Type="int" />
+          <Property Name="&amp;CDM_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client_city_activity_master">
+          <Key>
+            <PropertyRef Name="@CCAM_id" />
+          </Key>
+          <Property Name="@CCAM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CPCM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;AM_id" Type="int" Nullable="false" />
+          <Property Name="Sequence_Numeber" Type="int" Nullable="false" />
+          <Property Name="Day_Sequence_Number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client_master">
+          <Key>
+            <PropertyRef Name="@CUM_id" />
+          </Key>
+          <Property Name="@CUM_id" Type="int" Nullable="false" />
+          <Property Name="Client_Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Mobile_no" Type="double" Nullable="false" />
+          <Property Name="Email_id" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="client_package_city_master">
+          <Key>
+            <PropertyRef Name="@CPCM_id" />
+          </Key>
+          <Property Name="@CPCM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CPM_id" Type="int" />
+          <Property Name="&amp;CM_id" Type="int" />
+          <Property Name="Number_Of_Days_In_city" Type="int" />
+        </EntityType>
+        <EntityType Name="client_package_master">
+          <Key>
+            <PropertyRef Name="@CPM_id" />
+          </Key>
+          <Property Name="@CPM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;DM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;PM_id" Type="int" Nullable="false" />
+          <Property Name="Package_Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Package_Description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Number_Of_Days" Type="int" Nullable="false" />
+          <Property Name="Package_Price" Type="int" Nullable="false" />
+          <Property Name="Creation_Date" Type="date" Nullable="false" />
+          <Property Name="Booking_Flag" Type="tinyint" Nullable="false" />
+          <Property Name="&amp;CUM_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cont_destination_master">
+          <Key>
+            <PropertyRef Name="@Co_DM_id" />
+          </Key>
+          <Property Name="@Co_DM_id" Type="int" Nullable="false" />
+          <Property Name="Destination_Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="country_dest_master">
+          <Key>
+            <PropertyRef Name="@CDM_id" />
+          </Key>
+          <Property Name="@CDM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;Co_DM_id" Type="int" Nullable="false" />
+          <Property Name="Country_Name" Type="varchar" MaxLength="45" />
+          <Property Name="Latitude" Type="double" />
+          <Property Name="Longitude" Type="double" />
+          <Property Name="Visa_free" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="destination_image_master">
+          <Key>
+            <PropertyRef Name="&amp;DM_id" />
+          </Key>
+          <Property Name="&amp;DM_id" Type="int" Nullable="false" />
+          <Property Name="Image_URL" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="favourite_master">
+          <Key>
+            <PropertyRef Name="@FM_id" />
+          </Key>
+          <Property Name="@FM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CUM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CPM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;PM_id" Type="int" Nullable="false" />
+          <Property Name="Chosen_Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="keyword_master">
+          <Key>
+            <PropertyRef Name="@KM_id" />
+          </Key>
+          <Property Name="@KM_id" Type="int" Nullable="false" />
+          <Property Name="Keyword_Name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.rlh_data.keywordpackage_relate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="keywordpackage_relate">
+          <Key>
+            <PropertyRef Name="&amp;KM_id" />
+            <PropertyRef Name="&amp;PM_id" />
+          </Key>
+          <Property Name="&amp;KM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;PM_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="package_city_activity_master">
+          <Key>
+            <PropertyRef Name="@PCAM" />
+          </Key>
+          <Property Name="@PCAM" Type="int" Nullable="false" />
+          <Property Name="&amp;CM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;AM_id" Type="int" Nullable="false" />
+          <Property Name="Sequence_Number" Type="int" Nullable="false" />
+          <Property Name="Day_Sequence_Number" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="package_city_master">
+          <Key>
+            <PropertyRef Name="@PCM_id" />
+          </Key>
+          <Property Name="@PCM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;PM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CM_id" Type="int" Nullable="false" />
+          <Property Name="Number_Of_Days_in_city" Type="int" Nullable="false" />
+          <Property Name="&amp;PDM_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="package_dest_master">
+          <Key>
+            <PropertyRef Name="@PDM_id" />
+          </Key>
+          <Property Name="@PDM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;PM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;Co_DM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CDM_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="package_master">
+          <Key>
+            <PropertyRef Name="@PM_id" />
+          </Key>
+          <Property Name="@PM_id" Type="int" Nullable="false" />
+          <Property Name="Package_Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Package_Description" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="No_of_Days" Type="int" Nullable="false" />
+          <Property Name="Package_Price" Type="int" Nullable="false" />
+          <Property Name="Booking_Enabled_Flag" Type="tinyint" Nullable="false" />
+          <Property Name="Customization_Allowed_Flag" Type="tinyint" Nullable="false" />
+          <Property Name="Creation_Date" Type="date" Nullable="false" />
+          <Property Name="Expiring_Date" Type="date" />
+          <Property Name="Booking_Count" Type="int" />
+        </EntityType>
+        <EntityType Name="package_pick_month">
+          <Key>
+            <PropertyRef Name="@PPM" />
+          </Key>
+          <Property Name="@PPM" Type="int" Nullable="false" />
+          <Property Name="&amp;PM" Type="int" Nullable="false" />
+          <Property Name="Package_Month" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="priviledges">
+          <Key>
+            <PropertyRef Name="@PV_id" />
+          </Key>
+          <Property Name="@PV_id" Type="int" Nullable="false" />
+          <Property Name="Priviledge_Name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Priviledge_Value" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'def.rlh_data.priviledgeuser_relate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="priviledgeuser_relate">
+          <Key>
+            <PropertyRef Name="&amp;PV_id" />
+          </Key>
+          <Property Name="&amp;PV_id" Type="int" Nullable="false" />
+          <Property Name="&amp;UM_id" Type="int" />
+        </EntityType>
+        <EntityType Name="query_master">
+          <Key>
+            <PropertyRef Name="@QM_id" />
+          </Key>
+          <Property Name="@QM_id" Type="int" Nullable="false" />
+          <Property Name="&amp;CUM_id" Type="int" />
+          <Property Name="Query_Status" Type="int" />
+          <Property Name="No_Of_Days" Type="int" />
+          <Property Name="Budget" Type="double" />
+          <Property Name="No_Of_Person" Type="int" />
+          <Property Name="Mobile" Type="double" />
+          <Property Name="Email_id" Type="varchar" MaxLength="45" />
+          <Property Name="&amp;PM_id" Type="int" />
+          <Property Name="Create_Date" Type="date" />
+          <Property Name="Seen_Date" Type="date" />
+          <Property Name="Seen_Flag" Type="tinyint" />
+          <Property Name="Seen_By" Type="varchar" MaxLength="20" />
+          <Property Name="Client_Name" Type="varchar" MaxLength="45" />
+          <Property Name="Destination" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="user_master">
+          <Key>
+            <PropertyRef Name="@UM_id" />
+          </Key>
+          <Property Name="@UM_id" Type="int" Nullable="false" />
+          <Property Name="User_Name" Type="varchar" MaxLength="45" />
+          <Property Name="Admin_Flag" Type="tinyint" />
+        </EntityType>
+        <Association Name="actImage_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_image_master" Type="Self.activity_image_master" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="@AM_id" />
+            </Principal>
+            <Dependent Role="activity_image_master">
+              <PropertyRef Name="&amp;AM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="activity_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="@CM_id" />
+            </Principal>
+            <Dependent Role="activity_master">
+              <PropertyRef Name="&amp;CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="activitySchedule_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_schedule_master" Type="Self.activity_schedule_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="@AM_id" />
+            </Principal>
+            <Dependent Role="activity_schedule_master">
+              <PropertyRef Name="&amp;AM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookMaster_CUM">
+          <End Role="client_master" Type="Self.client_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="booking_master" Type="Self.booking_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_master">
+              <PropertyRef Name="@CUM_id" />
+            </Principal>
+            <Dependent Role="booking_master">
+              <PropertyRef Name="&amp;CUM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookMater_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="booking_master" Type="Self.booking_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="@PM_id" />
+            </Principal>
+            <Dependent Role="booking_master">
+              <PropertyRef Name="&amp;PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cilentCityAct_CPCM">
+          <End Role="client_package_city_master" Type="Self.client_package_city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_city_activity_master" Type="Self.client_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_package_city_master">
+              <PropertyRef Name="@CPCM_id" />
+            </Principal>
+            <Dependent Role="client_city_activity_master">
+              <PropertyRef Name="&amp;CPCM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="city_CDM">
+          <End Role="country_dest_master" Type="Self.country_dest_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="city_master" Type="Self.city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_dest_master">
+              <PropertyRef Name="@CDM_id" />
+            </Principal>
+            <Dependent Role="city_master">
+              <PropertyRef Name="&amp;CDM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="city_Co_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="city_master" Type="Self.city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="@Co_DM_id" />
+            </Principal>
+            <Dependent Role="city_master">
+              <PropertyRef Name="&amp;Co_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientCityAct_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_city_activity_master" Type="Self.client_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="@AM_id" />
+            </Principal>
+            <Dependent Role="client_city_activity_master">
+              <PropertyRef Name="&amp;AM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPack_CUM">
+          <End Role="client_master" Type="Self.client_master" Multiplicity="1" />
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_master">
+              <PropertyRef Name="@CUM_id" />
+            </Principal>
+            <Dependent Role="client_package_master">
+              <PropertyRef Name="&amp;CUM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPack_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="@Co_DM_id" />
+            </Principal>
+            <Dependent Role="client_package_master">
+              <PropertyRef Name="&amp;DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPack_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="@PM_id" />
+            </Principal>
+            <Dependent Role="client_package_master">
+              <PropertyRef Name="&amp;PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPackCity_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_city_master" Type="Self.client_package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="@CM_id" />
+            </Principal>
+            <Dependent Role="client_package_city_master">
+              <PropertyRef Name="&amp;CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPackCity_CPM">
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_city_master" Type="Self.client_package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_package_master">
+              <PropertyRef Name="@CPM_id" />
+            </Principal>
+            <Dependent Role="client_package_city_master">
+              <PropertyRef Name="&amp;CPM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="country_Co_DM_id">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="country_dest_master" Type="Self.country_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="@Co_DM_id" />
+            </Principal>
+            <Dependent Role="country_dest_master">
+              <PropertyRef Name="&amp;Co_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="desImage_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="destination_image_master" Type="Self.destination_image_master" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="@Co_DM_id" />
+            </Principal>
+            <Dependent Role="destination_image_master">
+              <PropertyRef Name="&amp;DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="facouriate_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="favourite_master" Type="Self.favourite_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="@PM_id" />
+            </Principal>
+            <Dependent Role="favourite_master">
+              <PropertyRef Name="&amp;PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="favouriate_CPM">
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="favourite_master" Type="Self.favourite_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_package_master">
+              <PropertyRef Name="@CPM_id" />
+            </Principal>
+            <Dependent Role="favourite_master">
+              <PropertyRef Name="&amp;CPM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="favourite_CUM">
+          <End Role="client_master" Type="Self.client_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="favourite_master" Type="Self.favourite_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_master">
+              <PropertyRef Name="@CUM_id" />
+            </Principal>
+            <Dependent Role="favourite_master">
+              <PropertyRef Name="&amp;CUM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="keyPack_KM">
+          <End Role="keyword_master" Type="Self.keyword_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="keywordpackage_relate" Type="Self.keywordpackage_relate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="keyword_master">
+              <PropertyRef Name="@KM_id" />
+            </Principal>
+            <Dependent Role="keywordpackage_relate">
+              <PropertyRef Name="&amp;KM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="keyPack_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="keywordpackage_relate" Type="Self.keywordpackage_relate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="@PM_id" />
+            </Principal>
+            <Dependent Role="keywordpackage_relate">
+              <PropertyRef Name="&amp;PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityAct_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_activity_master" Type="Self.package_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="@AM_id" />
+            </Principal>
+            <Dependent Role="package_city_activity_master">
+              <PropertyRef Name="&amp;AM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityAct_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_activity_master" Type="Self.package_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="@CM_id" />
+            </Principal>
+            <Dependent Role="package_city_activity_master">
+              <PropertyRef Name="&amp;CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityMaster_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_master" Type="Self.package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="@CM_id" />
+            </Principal>
+            <Dependent Role="package_city_master">
+              <PropertyRef Name="&amp;CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityMaster_PDM">
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_master" Type="Self.package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_dest_master">
+              <PropertyRef Name="@PDM_id" />
+            </Principal>
+            <Dependent Role="package_city_master">
+              <PropertyRef Name="&amp;PDM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityMaster_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_master" Type="Self.package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="@PM_id" />
+            </Principal>
+            <Dependent Role="package_city_master">
+              <PropertyRef Name="&amp;PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packDest_CDM">
+          <End Role="country_dest_master" Type="Self.country_dest_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_dest_master">
+              <PropertyRef Name="@CDM_id" />
+            </Principal>
+            <Dependent Role="package_dest_master">
+              <PropertyRef Name="&amp;CDM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packDest_Co_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1" />
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="@Co_DM_id" />
+            </Principal>
+            <Dependent Role="package_dest_master">
+              <PropertyRef Name="&amp;Co_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packDest_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="@PM_id" />
+            </Principal>
+            <Dependent Role="package_dest_master">
+              <PropertyRef Name="&amp;PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packMonth_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_pick_month" Type="Self.package_pick_month" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="@PM_id" />
+            </Principal>
+            <Dependent Role="package_pick_month">
+              <PropertyRef Name="&amp;PM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="priUser_PV">
+          <End Role="priviledges" Type="Self.priviledges" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="priviledgeuser_relate" Type="Self.priviledgeuser_relate" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="priviledges">
+              <PropertyRef Name="@PV_id" />
+            </Principal>
+            <Dependent Role="priviledgeuser_relate">
+              <PropertyRef Name="&amp;PV_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="priUser_UM">
+          <End Role="user_master" Type="Self.user_master" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="priviledgeuser_relate" Type="Self.priviledgeuser_relate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_master">
+              <PropertyRef Name="@UM_id" />
+            </Principal>
+            <Dependent Role="priviledgeuser_relate">
+              <PropertyRef Name="&amp;UM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="rlh_dataModelStoreContainer">
+          <EntitySet Name="activity_image_master" EntityType="Self.activity_image_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="activity_master" EntityType="Self.activity_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="activity_schedule_master" EntityType="Self.activity_schedule_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="booking_master" EntityType="Self.booking_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="city_master" EntityType="Self.city_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="client_city_activity_master" EntityType="Self.client_city_activity_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="client_master" EntityType="Self.client_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="client_package_city_master" EntityType="Self.client_package_city_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="client_package_master" EntityType="Self.client_package_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="cont_destination_master" EntityType="Self.cont_destination_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="country_dest_master" EntityType="Self.country_dest_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="destination_image_master" EntityType="Self.destination_image_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="favourite_master" EntityType="Self.favourite_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="keyword_master" EntityType="Self.keyword_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="package_city_activity_master" EntityType="Self.package_city_activity_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="package_city_master" EntityType="Self.package_city_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="package_dest_master" EntityType="Self.package_dest_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="package_master" EntityType="Self.package_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="package_pick_month" EntityType="Self.package_pick_month" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="priviledges" EntityType="Self.priviledges" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="query_master" EntityType="Self.query_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="user_master" EntityType="Self.user_master" Schema="rlh_data" store:Type="Tables" />
+          <EntitySet Name="keywordpackage_relate" EntityType="Self.keywordpackage_relate" store:Type="Tables" store:Schema="rlh_data">
+            <DefiningQuery>SELECT
+`keywordpackage_relate`.`&amp;KM_id`, 
+`keywordpackage_relate`.`&amp;PM_id`
+FROM `keywordpackage_relate` AS `keywordpackage_relate`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="priviledgeuser_relate" EntityType="Self.priviledgeuser_relate" store:Type="Tables" store:Schema="rlh_data">
+            <DefiningQuery>SELECT
+`priviledgeuser_relate`.`&amp;PV_id`, 
+`priviledgeuser_relate`.`&amp;UM_id`
+FROM `priviledgeuser_relate` AS `priviledgeuser_relate`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="actImage_AM" Association="Self.actImage_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="activity_image_master" EntitySet="activity_image_master" />
+          </AssociationSet>
+          <AssociationSet Name="activity_CM" Association="Self.activity_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="activity_master" EntitySet="activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="activitySchedule_AM" Association="Self.activitySchedule_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="activity_schedule_master" EntitySet="activity_schedule_master" />
+          </AssociationSet>
+          <AssociationSet Name="bookMaster_CUM" Association="Self.bookMaster_CUM">
+            <End Role="client_master" EntitySet="client_master" />
+            <End Role="booking_master" EntitySet="booking_master" />
+          </AssociationSet>
+          <AssociationSet Name="bookMater_PM" Association="Self.bookMater_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="booking_master" EntitySet="booking_master" />
+          </AssociationSet>
+          <AssociationSet Name="cilentCityAct_CPCM" Association="Self.cilentCityAct_CPCM">
+            <End Role="client_package_city_master" EntitySet="client_package_city_master" />
+            <End Role="client_city_activity_master" EntitySet="client_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="city_CDM" Association="Self.city_CDM">
+            <End Role="country_dest_master" EntitySet="country_dest_master" />
+            <End Role="city_master" EntitySet="city_master" />
+          </AssociationSet>
+          <AssociationSet Name="city_Co_DM" Association="Self.city_Co_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="city_master" EntitySet="city_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientCityAct_AM" Association="Self.clientCityAct_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="client_city_activity_master" EntitySet="client_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPack_CUM" Association="Self.clientPack_CUM">
+            <End Role="client_master" EntitySet="client_master" />
+            <End Role="client_package_master" EntitySet="client_package_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPack_DM" Association="Self.clientPack_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="client_package_master" EntitySet="client_package_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPack_PM" Association="Self.clientPack_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="client_package_master" EntitySet="client_package_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPackCity_CM" Association="Self.clientPackCity_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="client_package_city_master" EntitySet="client_package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPackCity_CPM" Association="Self.clientPackCity_CPM">
+            <End Role="client_package_master" EntitySet="client_package_master" />
+            <End Role="client_package_city_master" EntitySet="client_package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="country_Co_DM_id" Association="Self.country_Co_DM_id">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="country_dest_master" EntitySet="country_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="desImage_DM" Association="Self.desImage_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="destination_image_master" EntitySet="destination_image_master" />
+          </AssociationSet>
+          <AssociationSet Name="facouriate_PM" Association="Self.facouriate_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="favourite_master" EntitySet="favourite_master" />
+          </AssociationSet>
+          <AssociationSet Name="favouriate_CPM" Association="Self.favouriate_CPM">
+            <End Role="client_package_master" EntitySet="client_package_master" />
+            <End Role="favourite_master" EntitySet="favourite_master" />
+          </AssociationSet>
+          <AssociationSet Name="favourite_CUM" Association="Self.favourite_CUM">
+            <End Role="client_master" EntitySet="client_master" />
+            <End Role="favourite_master" EntitySet="favourite_master" />
+          </AssociationSet>
+          <AssociationSet Name="keyPack_KM" Association="Self.keyPack_KM">
+            <End Role="keyword_master" EntitySet="keyword_master" />
+            <End Role="keywordpackage_relate" EntitySet="keywordpackage_relate" />
+          </AssociationSet>
+          <AssociationSet Name="keyPack_PM" Association="Self.keyPack_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="keywordpackage_relate" EntitySet="keywordpackage_relate" />
+          </AssociationSet>
+          <AssociationSet Name="packCityAct_AM" Association="Self.packCityAct_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="package_city_activity_master" EntitySet="package_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityAct_CM" Association="Self.packCityAct_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="package_city_activity_master" EntitySet="package_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityMaster_CM" Association="Self.packCityMaster_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="package_city_master" EntitySet="package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityMaster_PDM" Association="Self.packCityMaster_PDM">
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+            <End Role="package_city_master" EntitySet="package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityMaster_PM" Association="Self.packCityMaster_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="package_city_master" EntitySet="package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="packDest_CDM" Association="Self.packDest_CDM">
+            <End Role="country_dest_master" EntitySet="country_dest_master" />
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="packDest_Co_DM" Association="Self.packDest_Co_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="packDest_PM" Association="Self.packDest_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="packMonth_PM" Association="Self.packMonth_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="package_pick_month" EntitySet="package_pick_month" />
+          </AssociationSet>
+          <AssociationSet Name="priUser_PV" Association="Self.priUser_PV">
+            <End Role="priviledges" EntitySet="priviledges" />
+            <End Role="priviledgeuser_relate" EntitySet="priviledgeuser_relate" />
+          </AssociationSet>
+          <AssociationSet Name="priUser_UM" Association="Self.priUser_UM">
+            <End Role="user_master" EntitySet="user_master" />
+            <End Role="priviledgeuser_relate" EntitySet="priviledgeuser_relate" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="rlh_dataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="activity_image_master">
+          <Key>
+            <PropertyRef Name="C_AM" />
+          </Key>
+          <Property Name="C_AM" Type="Int32" Nullable="false" />
+          <Property Name="Image_URl" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="activity_master" Relationship="Self.actImage_AM" FromRole="activity_image_master" ToRole="activity_master" />
+        </EntityType>
+        <EntityType Name="activity_master">
+          <Key>
+            <PropertyRef Name="C_AM_id" />
+          </Key>
+          <Property Name="C_AM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CM_id" Type="Int32" Nullable="false" />
+          <Property Name="Activity_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Duration" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="activity_image_master" Relationship="Self.actImage_AM" FromRole="activity_master" ToRole="activity_image_master" />
+          <NavigationProperty Name="city_master" Relationship="Self.activity_CM" FromRole="activity_master" ToRole="city_master" />
+          <NavigationProperty Name="activity_schedule_master" Relationship="Self.activitySchedule_AM" FromRole="activity_master" ToRole="activity_schedule_master" />
+          <NavigationProperty Name="client_city_activity_master" Relationship="Self.clientCityAct_AM" FromRole="activity_master" ToRole="client_city_activity_master" />
+          <NavigationProperty Name="package_city_activity_master" Relationship="Self.packCityAct_AM" FromRole="activity_master" ToRole="package_city_activity_master" />
+        </EntityType>
+        <EntityType Name="activity_schedule_master">
+          <Key>
+            <PropertyRef Name="C_ASM_id" />
+          </Key>
+          <Property Name="C_ASM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_AM" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Open_Time" Type="Int32" Nullable="false" />
+          <Property Name="Close_Time" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="activity_master" Relationship="Self.activitySchedule_AM" FromRole="activity_schedule_master" ToRole="activity_master" />
+        </EntityType>
+        <EntityType Name="booking_master">
+          <Key>
+            <PropertyRef Name="C_BM_id" />
+          </Key>
+          <Property Name="C_BM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CUM_id" Type="Int32" Nullable="false" />
+          <Property Name="Booking_Status" Type="Int32" Nullable="false" />
+          <Property Name="C_PM_id" Type="Int32" Nullable="false" />
+          <Property Name="Payment_Info" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_Of_Booking" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="client_master" Relationship="Self.bookMaster_CUM" FromRole="booking_master" ToRole="client_master" />
+          <NavigationProperty Name="package_master" Relationship="Self.bookMater_PM" FromRole="booking_master" ToRole="package_master" />
+        </EntityType>
+        <EntityType Name="city_master">
+          <Key>
+            <PropertyRef Name="C_CM_id" />
+          </Key>
+          <Property Name="C_CM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_Co_DM_id" Type="Int32" Nullable="false" />
+          <Property Name="City_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Activity_Hours" Type="Int32" />
+          <Property Name="C_CDM_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="activity_master" Relationship="Self.activity_CM" FromRole="city_master" ToRole="activity_master" />
+          <NavigationProperty Name="country_dest_master" Relationship="Self.city_CDM" FromRole="city_master" ToRole="country_dest_master" />
+          <NavigationProperty Name="cont_destination_master" Relationship="Self.city_Co_DM" FromRole="city_master" ToRole="cont_destination_master" />
+          <NavigationProperty Name="client_package_city_master" Relationship="Self.clientPackCity_CM" FromRole="city_master" ToRole="client_package_city_master" />
+          <NavigationProperty Name="package_city_activity_master" Relationship="Self.packCityAct_CM" FromRole="city_master" ToRole="package_city_activity_master" />
+          <NavigationProperty Name="package_city_master" Relationship="Self.packCityMaster_CM" FromRole="city_master" ToRole="package_city_master" />
+        </EntityType>
+        <EntityType Name="client_city_activity_master">
+          <Key>
+            <PropertyRef Name="C_CCAM_id" />
+          </Key>
+          <Property Name="C_CCAM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CPCM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_AM_id" Type="Int32" Nullable="false" />
+          <Property Name="Sequence_Numeber" Type="Int32" Nullable="false" />
+          <Property Name="Day_Sequence_Number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="activity_master" Relationship="Self.clientCityAct_AM" FromRole="client_city_activity_master" ToRole="activity_master" />
+          <NavigationProperty Name="client_package_city_master" Relationship="Self.cilentCityAct_CPCM" FromRole="client_city_activity_master" ToRole="client_package_city_master" />
+        </EntityType>
+        <EntityType Name="client_master">
+          <Key>
+            <PropertyRef Name="C_CUM_id" />
+          </Key>
+          <Property Name="C_CUM_id" Type="Int32" Nullable="false" />
+          <Property Name="Client_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile_no" Type="Double" Nullable="false" />
+          <Property Name="Email_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="booking_master" Relationship="Self.bookMaster_CUM" FromRole="client_master" ToRole="booking_master" />
+          <NavigationProperty Name="client_package_master" Relationship="Self.clientPack_CUM" FromRole="client_master" ToRole="client_package_master" />
+          <NavigationProperty Name="favourite_master" Relationship="Self.favourite_CUM" FromRole="client_master" ToRole="favourite_master" />
+        </EntityType>
+        <EntityType Name="client_package_city_master">
+          <Key>
+            <PropertyRef Name="C_CPCM_id" />
+          </Key>
+          <Property Name="C_CPCM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CPM_id" Type="Int32" />
+          <Property Name="C_CM_id" Type="Int32" />
+          <Property Name="Number_Of_Days_In_city" Type="Int32" />
+          <NavigationProperty Name="city_master" Relationship="Self.clientPackCity_CM" FromRole="client_package_city_master" ToRole="city_master" />
+          <NavigationProperty Name="client_city_activity_master" Relationship="Self.cilentCityAct_CPCM" FromRole="client_package_city_master" ToRole="client_city_activity_master" />
+          <NavigationProperty Name="client_package_master" Relationship="Self.clientPackCity_CPM" FromRole="client_package_city_master" ToRole="client_package_master" />
+        </EntityType>
+        <EntityType Name="client_package_master">
+          <Key>
+            <PropertyRef Name="C_CPM_id" />
+          </Key>
+          <Property Name="C_CPM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_DM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_PM_id" Type="Int32" Nullable="false" />
+          <Property Name="Package_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Package_Description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Number_Of_Days" Type="Int32" Nullable="false" />
+          <Property Name="Package_Price" Type="Int32" Nullable="false" />
+          <Property Name="Creation_Date" Type="DateTime" Nullable="false" />
+          <Property Name="Booking_Flag" Type="SByte" Nullable="false" />
+          <Property Name="C_CUM_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client_master" Relationship="Self.clientPack_CUM" FromRole="client_package_master" ToRole="client_master" />
+          <NavigationProperty Name="client_package_city_master" Relationship="Self.clientPackCity_CPM" FromRole="client_package_master" ToRole="client_package_city_master" />
+          <NavigationProperty Name="cont_destination_master" Relationship="Self.clientPack_DM" FromRole="client_package_master" ToRole="cont_destination_master" />
+          <NavigationProperty Name="package_master" Relationship="Self.clientPack_PM" FromRole="client_package_master" ToRole="package_master" />
+          <NavigationProperty Name="favourite_master" Relationship="Self.favouriate_CPM" FromRole="client_package_master" ToRole="favourite_master" />
+        </EntityType>
+        <EntityType Name="cont_destination_master">
+          <Key>
+            <PropertyRef Name="C_Co_DM_id" />
+          </Key>
+          <Property Name="C_Co_DM_id" Type="Int32" Nullable="false" />
+          <Property Name="Destination_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="city_master" Relationship="Self.city_Co_DM" FromRole="cont_destination_master" ToRole="city_master" />
+          <NavigationProperty Name="client_package_master" Relationship="Self.clientPack_DM" FromRole="cont_destination_master" ToRole="client_package_master" />
+          <NavigationProperty Name="country_dest_master" Relationship="Self.country_Co_DM_id" FromRole="cont_destination_master" ToRole="country_dest_master" />
+          <NavigationProperty Name="destination_image_master" Relationship="Self.desImage_DM" FromRole="cont_destination_master" ToRole="destination_image_master" />
+          <NavigationProperty Name="package_dest_master" Relationship="Self.packDest_Co_DM" FromRole="cont_destination_master" ToRole="package_dest_master" />
+        </EntityType>
+        <EntityType Name="country_dest_master">
+          <Key>
+            <PropertyRef Name="C_CDM_id" />
+          </Key>
+          <Property Name="C_CDM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_Co_DM_id" Type="Int32" Nullable="false" />
+          <Property Name="Country_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="Visa_free" Type="SByte" />
+          <NavigationProperty Name="city_master" Relationship="Self.city_CDM" FromRole="country_dest_master" ToRole="city_master" />
+          <NavigationProperty Name="cont_destination_master" Relationship="Self.country_Co_DM_id" FromRole="country_dest_master" ToRole="cont_destination_master" />
+          <NavigationProperty Name="package_dest_master" Relationship="Self.packDest_CDM" FromRole="country_dest_master" ToRole="package_dest_master" />
+        </EntityType>
+        <EntityType Name="destination_image_master">
+          <Key>
+            <PropertyRef Name="C_DM_id" />
+          </Key>
+          <Property Name="C_DM_id" Type="Int32" Nullable="false" />
+          <Property Name="Image_URL" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="cont_destination_master" Relationship="Self.desImage_DM" FromRole="destination_image_master" ToRole="cont_destination_master" />
+        </EntityType>
+        <EntityType Name="favourite_master">
+          <Key>
+            <PropertyRef Name="C_FM_id" />
+          </Key>
+          <Property Name="C_FM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CUM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CPM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_PM_id" Type="Int32" Nullable="false" />
+          <Property Name="Chosen_Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="client_master" Relationship="Self.favourite_CUM" FromRole="favourite_master" ToRole="client_master" />
+          <NavigationProperty Name="client_package_master" Relationship="Self.favouriate_CPM" FromRole="favourite_master" ToRole="client_package_master" />
+          <NavigationProperty Name="package_master" Relationship="Self.facouriate_PM" FromRole="favourite_master" ToRole="package_master" />
+        </EntityType>
+        <EntityType Name="keyword_master">
+          <Key>
+            <PropertyRef Name="C_KM_id" />
+          </Key>
+          <Property Name="C_KM_id" Type="Int32" Nullable="false" />
+          <Property Name="Keyword_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="package_master" Relationship="Self.keywordpackage_relate" FromRole="keyword_master" ToRole="package_master" />
+        </EntityType>
+        <EntityType Name="package_city_activity_master">
+          <Key>
+            <PropertyRef Name="C_PCAM" />
+          </Key>
+          <Property Name="C_PCAM" Type="Int32" Nullable="false" />
+          <Property Name="C_CM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_AM_id" Type="Int32" Nullable="false" />
+          <Property Name="Sequence_Number" Type="Int32" Nullable="false" />
+          <Property Name="Day_Sequence_Number" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="activity_master" Relationship="Self.packCityAct_AM" FromRole="package_city_activity_master" ToRole="activity_master" />
+          <NavigationProperty Name="city_master" Relationship="Self.packCityAct_CM" FromRole="package_city_activity_master" ToRole="city_master" />
+        </EntityType>
+        <EntityType Name="package_city_master">
+          <Key>
+            <PropertyRef Name="C_PCM_id" />
+          </Key>
+          <Property Name="C_PCM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_PM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CM_id" Type="Int32" Nullable="false" />
+          <Property Name="Number_Of_Days_in_city" Type="Int32" Nullable="false" />
+          <Property Name="C_PDM_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="city_master" Relationship="Self.packCityMaster_CM" FromRole="package_city_master" ToRole="city_master" />
+          <NavigationProperty Name="package_dest_master" Relationship="Self.packCityMaster_PDM" FromRole="package_city_master" ToRole="package_dest_master" />
+          <NavigationProperty Name="package_master" Relationship="Self.packCityMaster_PM" FromRole="package_city_master" ToRole="package_master" />
+        </EntityType>
+        <EntityType Name="package_dest_master">
+          <Key>
+            <PropertyRef Name="C_PDM_id" />
+          </Key>
+          <Property Name="C_PDM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_PM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_Co_DM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CDM_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cont_destination_master" Relationship="Self.packDest_Co_DM" FromRole="package_dest_master" ToRole="cont_destination_master" />
+          <NavigationProperty Name="country_dest_master" Relationship="Self.packDest_CDM" FromRole="package_dest_master" ToRole="country_dest_master" />
+          <NavigationProperty Name="package_city_master" Relationship="Self.packCityMaster_PDM" FromRole="package_dest_master" ToRole="package_city_master" />
+          <NavigationProperty Name="package_master" Relationship="Self.packDest_PM" FromRole="package_dest_master" ToRole="package_master" />
+        </EntityType>
+        <EntityType Name="package_master">
+          <Key>
+            <PropertyRef Name="C_PM_id" />
+          </Key>
+          <Property Name="C_PM_id" Type="Int32" Nullable="false" />
+          <Property Name="Package_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Package_Description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="No_of_Days" Type="Int32" Nullable="false" />
+          <Property Name="Package_Price" Type="Int32" Nullable="false" />
+          <Property Name="Booking_Enabled_Flag" Type="SByte" Nullable="false" />
+          <Property Name="Customization_Allowed_Flag" Type="SByte" Nullable="false" />
+          <Property Name="Creation_Date" Type="DateTime" Nullable="false" />
+          <Property Name="Expiring_Date" Type="DateTime" />
+          <Property Name="Booking_Count" Type="Int32" />
+          <NavigationProperty Name="booking_master" Relationship="Self.bookMater_PM" FromRole="package_master" ToRole="booking_master" />
+          <NavigationProperty Name="client_package_master" Relationship="Self.clientPack_PM" FromRole="package_master" ToRole="client_package_master" />
+          <NavigationProperty Name="favourite_master" Relationship="Self.facouriate_PM" FromRole="package_master" ToRole="favourite_master" />
+          <NavigationProperty Name="package_city_master" Relationship="Self.packCityMaster_PM" FromRole="package_master" ToRole="package_city_master" />
+          <NavigationProperty Name="package_dest_master" Relationship="Self.packDest_PM" FromRole="package_master" ToRole="package_dest_master" />
+          <NavigationProperty Name="package_pick_month" Relationship="Self.packMonth_PM" FromRole="package_master" ToRole="package_pick_month" />
+          <NavigationProperty Name="keyword_master" Relationship="Self.keywordpackage_relate" FromRole="package_master" ToRole="keyword_master" />
+        </EntityType>
+        <EntityType Name="package_pick_month">
+          <Key>
+            <PropertyRef Name="C_PPM" />
+          </Key>
+          <Property Name="C_PPM" Type="Int32" Nullable="false" />
+          <Property Name="C_PM" Type="Int32" Nullable="false" />
+          <Property Name="Package_Month" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="package_master" Relationship="Self.packMonth_PM" FromRole="package_pick_month" ToRole="package_master" />
+        </EntityType>
+        <EntityType Name="priviledge">
+          <Key>
+            <PropertyRef Name="C_PV_id" />
+          </Key>
+          <Property Name="C_PV_id" Type="Int32" Nullable="false" />
+          <Property Name="Priviledge_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Priviledge_Value" Type="SByte" Nullable="false" />
+          <NavigationProperty Name="priviledgeuser_relate" Relationship="Self.priUser_PV" FromRole="priviledges" ToRole="priviledgeuser_relate" />
+        </EntityType>
+        <EntityType Name="query_master">
+          <Key>
+            <PropertyRef Name="C_QM_id" />
+          </Key>
+          <Property Name="C_QM_id" Type="Int32" Nullable="false" />
+          <Property Name="C_CUM_id" Type="Int32" />
+          <Property Name="Query_Status" Type="Int32" />
+          <Property Name="No_Of_Days" Type="Int32" />
+          <Property Name="Budget" Type="Double" />
+          <Property Name="No_Of_Person" Type="Int32" />
+          <Property Name="Mobile" Type="Double" />
+          <Property Name="Email_id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="C_PM_id" Type="Int32" />
+          <Property Name="Create_Date" Type="DateTime" />
+          <Property Name="Seen_Date" Type="DateTime" />
+          <Property Name="Seen_Flag" Type="SByte" />
+          <Property Name="Seen_By" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Destination" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="user_master">
+          <Key>
+            <PropertyRef Name="C_UM_id" />
+          </Key>
+          <Property Name="C_UM_id" Type="Int32" Nullable="false" />
+          <Property Name="User_Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Admin_Flag" Type="SByte" />
+          <NavigationProperty Name="priviledgeuser_relate" Relationship="Self.priUser_UM" FromRole="user_master" ToRole="priviledgeuser_relate" />
+        </EntityType>
+        <EntityType Name="priviledgeuser_relate">
+          <Key>
+            <PropertyRef Name="C_PV_id" />
+          </Key>
+          <Property Name="C_PV_id" Type="Int32" Nullable="false" />
+          <Property Name="C_UM_id" Type="Int32" />
+          <NavigationProperty Name="priviledge" Relationship="Self.priUser_PV" FromRole="priviledgeuser_relate" ToRole="priviledges" />
+          <NavigationProperty Name="user_master" Relationship="Self.priUser_UM" FromRole="priviledgeuser_relate" ToRole="user_master" />
+        </EntityType>
+        <Association Name="actImage_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_image_master" Type="Self.activity_image_master" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="C_AM_id" />
+            </Principal>
+            <Dependent Role="activity_image_master">
+              <PropertyRef Name="C_AM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="activity_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="C_CM_id" />
+            </Principal>
+            <Dependent Role="activity_master">
+              <PropertyRef Name="C_CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="activitySchedule_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="activity_schedule_master" Type="Self.activity_schedule_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="C_AM_id" />
+            </Principal>
+            <Dependent Role="activity_schedule_master">
+              <PropertyRef Name="C_AM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientCityAct_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_city_activity_master" Type="Self.client_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="C_AM_id" />
+            </Principal>
+            <Dependent Role="client_city_activity_master">
+              <PropertyRef Name="C_AM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityAct_AM">
+          <End Role="activity_master" Type="Self.activity_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_activity_master" Type="Self.package_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="activity_master">
+              <PropertyRef Name="C_AM_id" />
+            </Principal>
+            <Dependent Role="package_city_activity_master">
+              <PropertyRef Name="C_AM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookMaster_CUM">
+          <End Role="client_master" Type="Self.client_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="booking_master" Type="Self.booking_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_master">
+              <PropertyRef Name="C_CUM_id" />
+            </Principal>
+            <Dependent Role="booking_master">
+              <PropertyRef Name="C_CUM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookMater_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="booking_master" Type="Self.booking_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="C_PM_id" />
+            </Principal>
+            <Dependent Role="booking_master">
+              <PropertyRef Name="C_PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="city_CDM">
+          <End Role="country_dest_master" Type="Self.country_dest_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="city_master" Type="Self.city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_dest_master">
+              <PropertyRef Name="C_CDM_id" />
+            </Principal>
+            <Dependent Role="city_master">
+              <PropertyRef Name="C_CDM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="city_Co_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="city_master" Type="Self.city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Principal>
+            <Dependent Role="city_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPackCity_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_city_master" Type="Self.client_package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="C_CM_id" />
+            </Principal>
+            <Dependent Role="client_package_city_master">
+              <PropertyRef Name="C_CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityAct_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_activity_master" Type="Self.package_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="C_CM_id" />
+            </Principal>
+            <Dependent Role="package_city_activity_master">
+              <PropertyRef Name="C_CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityMaster_CM">
+          <End Role="city_master" Type="Self.city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_master" Type="Self.package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city_master">
+              <PropertyRef Name="C_CM_id" />
+            </Principal>
+            <Dependent Role="package_city_master">
+              <PropertyRef Name="C_CM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cilentCityAct_CPCM">
+          <End Role="client_package_city_master" Type="Self.client_package_city_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_city_activity_master" Type="Self.client_city_activity_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_package_city_master">
+              <PropertyRef Name="C_CPCM_id" />
+            </Principal>
+            <Dependent Role="client_city_activity_master">
+              <PropertyRef Name="C_CPCM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPack_CUM">
+          <End Role="client_master" Type="Self.client_master" Multiplicity="1" />
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_master">
+              <PropertyRef Name="C_CUM_id" />
+            </Principal>
+            <Dependent Role="client_package_master">
+              <PropertyRef Name="C_CUM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="favourite_CUM">
+          <End Role="client_master" Type="Self.client_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="favourite_master" Type="Self.favourite_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_master">
+              <PropertyRef Name="C_CUM_id" />
+            </Principal>
+            <Dependent Role="favourite_master">
+              <PropertyRef Name="C_CUM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPackCity_CPM">
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_city_master" Type="Self.client_package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_package_master">
+              <PropertyRef Name="C_CPM_id" />
+            </Principal>
+            <Dependent Role="client_package_city_master">
+              <PropertyRef Name="C_CPM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPack_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Principal>
+            <Dependent Role="client_package_master">
+              <PropertyRef Name="C_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="clientPack_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="C_PM_id" />
+            </Principal>
+            <Dependent Role="client_package_master">
+              <PropertyRef Name="C_PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="favouriate_CPM">
+          <End Role="client_package_master" Type="Self.client_package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="favourite_master" Type="Self.favourite_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="client_package_master">
+              <PropertyRef Name="C_CPM_id" />
+            </Principal>
+            <Dependent Role="favourite_master">
+              <PropertyRef Name="C_CPM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="country_Co_DM_id">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="country_dest_master" Type="Self.country_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Principal>
+            <Dependent Role="country_dest_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="desImage_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="destination_image_master" Type="Self.destination_image_master" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Principal>
+            <Dependent Role="destination_image_master">
+              <PropertyRef Name="C_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packDest_Co_DM">
+          <End Role="cont_destination_master" Type="Self.cont_destination_master" Multiplicity="1" />
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cont_destination_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Principal>
+            <Dependent Role="package_dest_master">
+              <PropertyRef Name="C_Co_DM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packDest_CDM">
+          <End Role="country_dest_master" Type="Self.country_dest_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_dest_master">
+              <PropertyRef Name="C_CDM_id" />
+            </Principal>
+            <Dependent Role="package_dest_master">
+              <PropertyRef Name="C_CDM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="facouriate_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="favourite_master" Type="Self.favourite_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="C_PM_id" />
+            </Principal>
+            <Dependent Role="favourite_master">
+              <PropertyRef Name="C_PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityMaster_PDM">
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_master" Type="Self.package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_dest_master">
+              <PropertyRef Name="C_PDM_id" />
+            </Principal>
+            <Dependent Role="package_city_master">
+              <PropertyRef Name="C_PDM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packCityMaster_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_city_master" Type="Self.package_city_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="C_PM_id" />
+            </Principal>
+            <Dependent Role="package_city_master">
+              <PropertyRef Name="C_PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packDest_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_dest_master" Type="Self.package_dest_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="C_PM_id" />
+            </Principal>
+            <Dependent Role="package_dest_master">
+              <PropertyRef Name="C_PM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="packMonth_PM">
+          <End Role="package_master" Type="Self.package_master" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="package_pick_month" Type="Self.package_pick_month" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="package_master">
+              <PropertyRef Name="C_PM_id" />
+            </Principal>
+            <Dependent Role="package_pick_month">
+              <PropertyRef Name="C_PM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="priUser_PV">
+          <End Role="priviledges" Type="Self.priviledge" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="priviledgeuser_relate" Type="Self.priviledgeuser_relate" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="priviledges">
+              <PropertyRef Name="C_PV_id" />
+            </Principal>
+            <Dependent Role="priviledgeuser_relate">
+              <PropertyRef Name="C_PV_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="priUser_UM">
+          <End Role="user_master" Type="Self.user_master" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="priviledgeuser_relate" Type="Self.priviledgeuser_relate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_master">
+              <PropertyRef Name="C_UM_id" />
+            </Principal>
+            <Dependent Role="priviledgeuser_relate">
+              <PropertyRef Name="C_UM_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="keywordpackage_relate">
+          <End Role="keyword_master" Type="Self.keyword_master" Multiplicity="*" />
+          <End Role="package_master" Type="Self.package_master" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="rlh_dataEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="activity_image_master" EntityType="Self.activity_image_master" />
+          <EntitySet Name="activity_master" EntityType="Self.activity_master" />
+          <EntitySet Name="activity_schedule_master" EntityType="Self.activity_schedule_master" />
+          <EntitySet Name="booking_master" EntityType="Self.booking_master" />
+          <EntitySet Name="city_master" EntityType="Self.city_master" />
+          <EntitySet Name="client_city_activity_master" EntityType="Self.client_city_activity_master" />
+          <EntitySet Name="client_master" EntityType="Self.client_master" />
+          <EntitySet Name="client_package_city_master" EntityType="Self.client_package_city_master" />
+          <EntitySet Name="client_package_master" EntityType="Self.client_package_master" />
+          <EntitySet Name="cont_destination_master" EntityType="Self.cont_destination_master" />
+          <EntitySet Name="country_dest_master" EntityType="Self.country_dest_master" />
+          <EntitySet Name="destination_image_master" EntityType="Self.destination_image_master" />
+          <EntitySet Name="favourite_master" EntityType="Self.favourite_master" />
+          <EntitySet Name="keyword_master" EntityType="Self.keyword_master" />
+          <EntitySet Name="package_city_activity_master" EntityType="Self.package_city_activity_master" />
+          <EntitySet Name="package_city_master" EntityType="Self.package_city_master" />
+          <EntitySet Name="package_dest_master" EntityType="Self.package_dest_master" />
+          <EntitySet Name="package_master" EntityType="Self.package_master" />
+          <EntitySet Name="package_pick_month" EntityType="Self.package_pick_month" />
+          <EntitySet Name="priviledges" EntityType="Self.priviledge" />
+          <EntitySet Name="query_master" EntityType="Self.query_master" />
+          <EntitySet Name="user_master" EntityType="Self.user_master" />
+          <EntitySet Name="priviledgeuser_relate" EntityType="Self.priviledgeuser_relate" />
+          <AssociationSet Name="actImage_AM" Association="Self.actImage_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="activity_image_master" EntitySet="activity_image_master" />
+          </AssociationSet>
+          <AssociationSet Name="activity_CM" Association="Self.activity_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="activity_master" EntitySet="activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="activitySchedule_AM" Association="Self.activitySchedule_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="activity_schedule_master" EntitySet="activity_schedule_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientCityAct_AM" Association="Self.clientCityAct_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="client_city_activity_master" EntitySet="client_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityAct_AM" Association="Self.packCityAct_AM">
+            <End Role="activity_master" EntitySet="activity_master" />
+            <End Role="package_city_activity_master" EntitySet="package_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="bookMaster_CUM" Association="Self.bookMaster_CUM">
+            <End Role="client_master" EntitySet="client_master" />
+            <End Role="booking_master" EntitySet="booking_master" />
+          </AssociationSet>
+          <AssociationSet Name="bookMater_PM" Association="Self.bookMater_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="booking_master" EntitySet="booking_master" />
+          </AssociationSet>
+          <AssociationSet Name="city_CDM" Association="Self.city_CDM">
+            <End Role="country_dest_master" EntitySet="country_dest_master" />
+            <End Role="city_master" EntitySet="city_master" />
+          </AssociationSet>
+          <AssociationSet Name="city_Co_DM" Association="Self.city_Co_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="city_master" EntitySet="city_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPackCity_CM" Association="Self.clientPackCity_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="client_package_city_master" EntitySet="client_package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityAct_CM" Association="Self.packCityAct_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="package_city_activity_master" EntitySet="package_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityMaster_CM" Association="Self.packCityMaster_CM">
+            <End Role="city_master" EntitySet="city_master" />
+            <End Role="package_city_master" EntitySet="package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="cilentCityAct_CPCM" Association="Self.cilentCityAct_CPCM">
+            <End Role="client_package_city_master" EntitySet="client_package_city_master" />
+            <End Role="client_city_activity_master" EntitySet="client_city_activity_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPack_CUM" Association="Self.clientPack_CUM">
+            <End Role="client_master" EntitySet="client_master" />
+            <End Role="client_package_master" EntitySet="client_package_master" />
+          </AssociationSet>
+          <AssociationSet Name="favourite_CUM" Association="Self.favourite_CUM">
+            <End Role="client_master" EntitySet="client_master" />
+            <End Role="favourite_master" EntitySet="favourite_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPackCity_CPM" Association="Self.clientPackCity_CPM">
+            <End Role="client_package_master" EntitySet="client_package_master" />
+            <End Role="client_package_city_master" EntitySet="client_package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPack_DM" Association="Self.clientPack_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="client_package_master" EntitySet="client_package_master" />
+          </AssociationSet>
+          <AssociationSet Name="clientPack_PM" Association="Self.clientPack_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="client_package_master" EntitySet="client_package_master" />
+          </AssociationSet>
+          <AssociationSet Name="favouriate_CPM" Association="Self.favouriate_CPM">
+            <End Role="client_package_master" EntitySet="client_package_master" />
+            <End Role="favourite_master" EntitySet="favourite_master" />
+          </AssociationSet>
+          <AssociationSet Name="country_Co_DM_id" Association="Self.country_Co_DM_id">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="country_dest_master" EntitySet="country_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="desImage_DM" Association="Self.desImage_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="destination_image_master" EntitySet="destination_image_master" />
+          </AssociationSet>
+          <AssociationSet Name="packDest_Co_DM" Association="Self.packDest_Co_DM">
+            <End Role="cont_destination_master" EntitySet="cont_destination_master" />
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="packDest_CDM" Association="Self.packDest_CDM">
+            <End Role="country_dest_master" EntitySet="country_dest_master" />
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="facouriate_PM" Association="Self.facouriate_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="favourite_master" EntitySet="favourite_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityMaster_PDM" Association="Self.packCityMaster_PDM">
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+            <End Role="package_city_master" EntitySet="package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="packCityMaster_PM" Association="Self.packCityMaster_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="package_city_master" EntitySet="package_city_master" />
+          </AssociationSet>
+          <AssociationSet Name="packDest_PM" Association="Self.packDest_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="package_dest_master" EntitySet="package_dest_master" />
+          </AssociationSet>
+          <AssociationSet Name="packMonth_PM" Association="Self.packMonth_PM">
+            <End Role="package_master" EntitySet="package_master" />
+            <End Role="package_pick_month" EntitySet="package_pick_month" />
+          </AssociationSet>
+          <AssociationSet Name="priUser_PV" Association="Self.priUser_PV">
+            <End Role="priviledges" EntitySet="priviledges" />
+            <End Role="priviledgeuser_relate" EntitySet="priviledgeuser_relate" />
+          </AssociationSet>
+          <AssociationSet Name="priUser_UM" Association="Self.priUser_UM">
+            <End Role="user_master" EntitySet="user_master" />
+            <End Role="priviledgeuser_relate" EntitySet="priviledgeuser_relate" />
+          </AssociationSet>
+          <AssociationSet Name="keywordpackage_relate" Association="Self.keywordpackage_relate">
+            <End Role="keyword_master" EntitySet="keyword_master" />
+            <End Role="package_master" EntitySet="package_master" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="rlh_dataModelStoreContainer" CdmEntityContainer="rlh_dataEntities2">
+          <EntitySetMapping Name="activity_image_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.activity_image_master">
+              <MappingFragment StoreEntitySet="activity_image_master">
+                <ScalarProperty Name="C_AM" ColumnName="&amp;AM" />
+                <ScalarProperty Name="Image_URl" ColumnName="Image_URl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="activity_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.activity_master">
+              <MappingFragment StoreEntitySet="activity_master">
+                <ScalarProperty Name="C_AM_id" ColumnName="@AM_id" />
+                <ScalarProperty Name="C_CM_id" ColumnName="&amp;CM_id" />
+                <ScalarProperty Name="Activity_Name" ColumnName="Activity_Name" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="activity_schedule_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.activity_schedule_master">
+              <MappingFragment StoreEntitySet="activity_schedule_master">
+                <ScalarProperty Name="C_ASM_id" ColumnName="@ASM_id" />
+                <ScalarProperty Name="C_AM" ColumnName="&amp;AM" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Open_Time" ColumnName="Open_Time" />
+                <ScalarProperty Name="Close_Time" ColumnName="Close_Time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="booking_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.booking_master">
+              <MappingFragment StoreEntitySet="booking_master">
+                <ScalarProperty Name="C_BM_id" ColumnName="@BM_id" />
+                <ScalarProperty Name="C_CUM_id" ColumnName="&amp;CUM_id" />
+                <ScalarProperty Name="Booking_Status" ColumnName="Booking_Status" />
+                <ScalarProperty Name="C_PM_id" ColumnName="&amp;PM_id" />
+                <ScalarProperty Name="Payment_Info" ColumnName="Payment_Info" />
+                <ScalarProperty Name="Date_Of_Booking" ColumnName="Date_Of_Booking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="city_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.city_master">
+              <MappingFragment StoreEntitySet="city_master">
+                <ScalarProperty Name="C_CM_id" ColumnName="@CM_id" />
+                <ScalarProperty Name="C_Co_DM_id" ColumnName="&amp;Co_DM_id" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Activity_Hours" ColumnName="Activity_Hours" />
+                <ScalarProperty Name="C_CDM_id" ColumnName="&amp;CDM_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_city_activity_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.client_city_activity_master">
+              <MappingFragment StoreEntitySet="client_city_activity_master">
+                <ScalarProperty Name="C_CCAM_id" ColumnName="@CCAM_id" />
+                <ScalarProperty Name="C_CPCM_id" ColumnName="&amp;CPCM_id" />
+                <ScalarProperty Name="C_AM_id" ColumnName="&amp;AM_id" />
+                <ScalarProperty Name="Sequence_Numeber" ColumnName="Sequence_Numeber" />
+                <ScalarProperty Name="Day_Sequence_Number" ColumnName="Day_Sequence_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.client_master">
+              <MappingFragment StoreEntitySet="client_master">
+                <ScalarProperty Name="C_CUM_id" ColumnName="@CUM_id" />
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Mobile_no" ColumnName="Mobile_no" />
+                <ScalarProperty Name="Email_id" ColumnName="Email_id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_package_city_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.client_package_city_master">
+              <MappingFragment StoreEntitySet="client_package_city_master">
+                <ScalarProperty Name="C_CPCM_id" ColumnName="@CPCM_id" />
+                <ScalarProperty Name="C_CPM_id" ColumnName="&amp;CPM_id" />
+                <ScalarProperty Name="C_CM_id" ColumnName="&amp;CM_id" />
+                <ScalarProperty Name="Number_Of_Days_In_city" ColumnName="Number_Of_Days_In_city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="client_package_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.client_package_master">
+              <MappingFragment StoreEntitySet="client_package_master">
+                <ScalarProperty Name="C_CPM_id" ColumnName="@CPM_id" />
+                <ScalarProperty Name="C_DM_id" ColumnName="&amp;DM_id" />
+                <ScalarProperty Name="C_PM_id" ColumnName="&amp;PM_id" />
+                <ScalarProperty Name="Package_Name" ColumnName="Package_Name" />
+                <ScalarProperty Name="Package_Description" ColumnName="Package_Description" />
+                <ScalarProperty Name="Number_Of_Days" ColumnName="Number_Of_Days" />
+                <ScalarProperty Name="Package_Price" ColumnName="Package_Price" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Booking_Flag" ColumnName="Booking_Flag" />
+                <ScalarProperty Name="C_CUM_id" ColumnName="&amp;CUM_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cont_destination_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.cont_destination_master">
+              <MappingFragment StoreEntitySet="cont_destination_master">
+                <ScalarProperty Name="C_Co_DM_id" ColumnName="@Co_DM_id" />
+                <ScalarProperty Name="Destination_Name" ColumnName="Destination_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="country_dest_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.country_dest_master">
+              <MappingFragment StoreEntitySet="country_dest_master">
+                <ScalarProperty Name="C_CDM_id" ColumnName="@CDM_id" />
+                <ScalarProperty Name="C_Co_DM_id" ColumnName="&amp;Co_DM_id" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Visa_free" ColumnName="Visa_free" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="destination_image_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.destination_image_master">
+              <MappingFragment StoreEntitySet="destination_image_master">
+                <ScalarProperty Name="C_DM_id" ColumnName="&amp;DM_id" />
+                <ScalarProperty Name="Image_URL" ColumnName="Image_URL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="favourite_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.favourite_master">
+              <MappingFragment StoreEntitySet="favourite_master">
+                <ScalarProperty Name="C_FM_id" ColumnName="@FM_id" />
+                <ScalarProperty Name="C_CUM_id" ColumnName="&amp;CUM_id" />
+                <ScalarProperty Name="C_CPM_id" ColumnName="&amp;CPM_id" />
+                <ScalarProperty Name="C_PM_id" ColumnName="&amp;PM_id" />
+                <ScalarProperty Name="Chosen_Date" ColumnName="Chosen_Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="keyword_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.keyword_master">
+              <MappingFragment StoreEntitySet="keyword_master">
+                <ScalarProperty Name="C_KM_id" ColumnName="@KM_id" />
+                <ScalarProperty Name="Keyword_Name" ColumnName="Keyword_Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_city_activity_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.package_city_activity_master">
+              <MappingFragment StoreEntitySet="package_city_activity_master">
+                <ScalarProperty Name="C_PCAM" ColumnName="@PCAM" />
+                <ScalarProperty Name="C_CM_id" ColumnName="&amp;CM_id" />
+                <ScalarProperty Name="C_AM_id" ColumnName="&amp;AM_id" />
+                <ScalarProperty Name="Sequence_Number" ColumnName="Sequence_Number" />
+                <ScalarProperty Name="Day_Sequence_Number" ColumnName="Day_Sequence_Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_city_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.package_city_master">
+              <MappingFragment StoreEntitySet="package_city_master">
+                <ScalarProperty Name="C_PCM_id" ColumnName="@PCM_id" />
+                <ScalarProperty Name="C_PM_id" ColumnName="&amp;PM_id" />
+                <ScalarProperty Name="C_CM_id" ColumnName="&amp;CM_id" />
+                <ScalarProperty Name="Number_Of_Days_in_city" ColumnName="Number_Of_Days_in_city" />
+                <ScalarProperty Name="C_PDM_id" ColumnName="&amp;PDM_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_dest_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.package_dest_master">
+              <MappingFragment StoreEntitySet="package_dest_master">
+                <ScalarProperty Name="C_PDM_id" ColumnName="@PDM_id" />
+                <ScalarProperty Name="C_PM_id" ColumnName="&amp;PM_id" />
+                <ScalarProperty Name="C_Co_DM_id" ColumnName="&amp;Co_DM_id" />
+                <ScalarProperty Name="C_CDM_id" ColumnName="&amp;CDM_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.package_master">
+              <MappingFragment StoreEntitySet="package_master">
+                <ScalarProperty Name="C_PM_id" ColumnName="@PM_id" />
+                <ScalarProperty Name="Package_Name" ColumnName="Package_Name" />
+                <ScalarProperty Name="Package_Description" ColumnName="Package_Description" />
+                <ScalarProperty Name="No_of_Days" ColumnName="No_of_Days" />
+                <ScalarProperty Name="Package_Price" ColumnName="Package_Price" />
+                <ScalarProperty Name="Booking_Enabled_Flag" ColumnName="Booking_Enabled_Flag" />
+                <ScalarProperty Name="Customization_Allowed_Flag" ColumnName="Customization_Allowed_Flag" />
+                <ScalarProperty Name="Creation_Date" ColumnName="Creation_Date" />
+                <ScalarProperty Name="Expiring_Date" ColumnName="Expiring_Date" />
+                <ScalarProperty Name="Booking_Count" ColumnName="Booking_Count" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="package_pick_month">
+            <EntityTypeMapping TypeName="rlh_dataModel.package_pick_month">
+              <MappingFragment StoreEntitySet="package_pick_month">
+                <ScalarProperty Name="C_PPM" ColumnName="@PPM" />
+                <ScalarProperty Name="C_PM" ColumnName="&amp;PM" />
+                <ScalarProperty Name="Package_Month" ColumnName="Package_Month" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="priviledges">
+            <EntityTypeMapping TypeName="rlh_dataModel.priviledge">
+              <MappingFragment StoreEntitySet="priviledges">
+                <ScalarProperty Name="C_PV_id" ColumnName="@PV_id" />
+                <ScalarProperty Name="Priviledge_Name" ColumnName="Priviledge_Name" />
+                <ScalarProperty Name="Priviledge_Value" ColumnName="Priviledge_Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="query_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.query_master">
+              <MappingFragment StoreEntitySet="query_master">
+                <ScalarProperty Name="C_QM_id" ColumnName="@QM_id" />
+                <ScalarProperty Name="C_CUM_id" ColumnName="&amp;CUM_id" />
+                <ScalarProperty Name="Query_Status" ColumnName="Query_Status" />
+                <ScalarProperty Name="No_Of_Days" ColumnName="No_Of_Days" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="No_Of_Person" ColumnName="No_Of_Person" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email_id" ColumnName="Email_id" />
+                <ScalarProperty Name="C_PM_id" ColumnName="&amp;PM_id" />
+                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
+                <ScalarProperty Name="Seen_Date" ColumnName="Seen_Date" />
+                <ScalarProperty Name="Seen_Flag" ColumnName="Seen_Flag" />
+                <ScalarProperty Name="Seen_By" ColumnName="Seen_By" />
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_master">
+            <EntityTypeMapping TypeName="rlh_dataModel.user_master">
+              <MappingFragment StoreEntitySet="user_master">
+                <ScalarProperty Name="C_UM_id" ColumnName="@UM_id" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="Admin_Flag" ColumnName="Admin_Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="priviledgeuser_relate">
+            <EntityTypeMapping TypeName="rlh_dataModel.priviledgeuser_relate">
+              <MappingFragment StoreEntitySet="priviledgeuser_relate">
+                <ScalarProperty Name="C_PV_id" ColumnName="&amp;PV_id" />
+                <ScalarProperty Name="C_UM_id" ColumnName="&amp;UM_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="keywordpackage_relate" TypeName="rlh_dataModel.keywordpackage_relate" StoreEntitySet="keywordpackage_relate">
+            <EndProperty Name="keyword_master">
+              <ScalarProperty Name="C_KM_id" ColumnName="&amp;KM_id" />
+            </EndProperty>
+            <EndProperty Name="package_master">
+              <ScalarProperty Name="C_PM_id" ColumnName="&amp;PM_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

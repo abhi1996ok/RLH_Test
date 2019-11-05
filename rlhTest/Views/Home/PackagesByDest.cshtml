@@ -1,0 +1,212 @@
+﻿@model List<rlhTest.Models.DataModel.package_master>
+<!--Package list view filtered by country-->
+@{
+    ViewBag.Title = "PackagesByDest";
+    Layout = "~/Views/Shared/_home.cshtml";
+}
+<div class="container text-center mt-5 mb-5">
+    <h5>
+        Let's find out who's planning as a
+    </h5>
+    <h3>
+        <b>
+            I am travelling as a..
+        </b>
+    </h3>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container border">
+    <div class="container text-center border">
+        <h2>
+            Search Results for You
+        </h2>
+    </div>
+    <div class="row" style="padding: 1rem">
+        <div class="col-sm-3">
+            Plan Your Tour Date :
+        </div>
+        <div class="col-sm-6">
+            <!-- 				<div class="input-group">
+                                <input type="text" class="form-control form-control-sm" placeholder="Search" style="border-right: none">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary btn-sm" type="button" style="background-color: transparent; border: 1px solid #CED4DA; border-left: none;">
+                                        <img src="assets\style\img\search.png" style="height: 0.8rem; width: 0.8rem">
+                                    </button>
+                                </div>
+                            </div>	 -->
+            <div class="row">
+                <div class="col-sm-1">
+                    From
+                </div>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control form-control-sm clearfix" id="pwd" placeholder="Enter Date" name="date">
+                </div>
+                <div class="col-sm-1">
+                    To
+                </div>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control form-control-sm clearfix" id="pwd" placeholder="Enter Date" name="date">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <select class="form-control form-control-sm ">
+                <option>Sort by: Recommended</option>
+                <option>OPTION 2</option>
+                <option>OPTION 3</option>
+                <option>OPTION 4</option>
+                <option>OPTION 5</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-4 " style="padding: 0; border-top: 0.1rem solid #DEE2E6; ">
+
+            				<div class="mt-3" style="padding-left: 15px; padding-right: 15px">
+                                <h6>Type Of Destination</h6>
+                                <form class="">
+                                    <div class="custom-control custom-checkbox ">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                                        <label class="custom-control-label" for="customCheck">Country Combo</label>
+                                        <br>
+                                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                                        <label class="custom-control-label" for="customCheck">Single Country</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr style="border-top: 0.1rem solid #DEE2E6; "> 
+
+            <div style="padding-left: 15px; padding-right: 15px">
+                <h6>Budget</h6>
+                <form class="">
+                    <div class="custom-control custom-checkbox ">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Economy</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Standard</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Luxury</label>
+                    </div>
+                </form>
+            </div>
+            <hr style="border-top: 0.1rem solid #DEE2E6; ">
+
+            <div style="padding-left: 15px; padding-right: 15px">
+                <h6>Price (INR)</h6>
+                <form action="">
+
+                    <input type="range" class="custom-range" id="customRange" name="points1">
+                </form>
+            </div>
+
+            <hr style="border-top: 0.1rem solid #DEE2E6; ">
+
+            <!-- 			<div style="padding-left: 15px; padding-right: 15px">
+                                <h6>Hotel Rating</h6>
+                                    <span class="fa fa-star" id="star1" onclick="add(this,1)"></span>
+                                    <span class="fa fa-star" id="star2" onclick="add(this,2)"></span>
+                                    <span class="fa fa-star" id="star3" onclick="add(this,3)"></span>
+                                    <span class="fa fa-star" id="star4" onclick="add(this,4)"></span>
+                                    <span class="fa fa-star" id="star5" onclick="add(this,5)"></span>
+                            </div>
+
+                            <hr style="border-top: 0.1rem solid #DEE2E6; "> -->
+
+            <div class="mb-3" style="padding-left: 15px; padding-right: 15px">
+                <h6>Duration</h6>
+                <form class="">
+                    <div class="custom-control custom-checkbox ">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">1-3 Days</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">4-6 Days</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">7-11 Days</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">12 or More Days</label>
+                    </div>
+                </form>
+            </div>
+
+            <hr style="border-top: 0.1rem solid #DEE2E6; ">
+
+            <div class="mb-3" style="padding-left: 15px; padding-right: 15px">
+                <h6>Narrow Your Destination</h6>
+                <form class="">
+                    <div class="custom-control custom-checkbox ">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Bangkok</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Phuket</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">Pattaya</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-8 border">
+            <div class="row mt-3 mb-3" style="overflow:auto;">
+
+                @for (int i = 1; i <= Model.Count(); i += 2)
+                 {
+                    <div class="col-sm-6">
+                        @Html.Partial("packageView", Model.ElementAt(i - 1))
+                    </div>
+                    if (i < Model.Count)
+                    {
+                        <div class="col-sm-6">
+                            @Html.Partial("packageView", Model.ElementAt(i))
+                        </div>
+                    }
+
+                 }
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using rlhTest.Models;
+using rlhTest.Models.DataModel;
 
 namespace rlhTest
 {
@@ -15,7 +16,7 @@ namespace rlhTest
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<rlh_dataEntities>(null);
+            Database.SetInitializer<rlh_dataEntities2>(null);
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

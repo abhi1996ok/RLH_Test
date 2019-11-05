@@ -1,33 +1,200 @@
-﻿@model List<rlhTest.Models.package_master>
+﻿@model List<rlhTest.Models.DataModel.package_master>
 
+<!--Not in use Package Page -->
 @{
     ViewBag.Title = "Packages";
     Layout = "~/Views/Shared/_home.cshtml";
 }
-<div>
+<div class="container-fluid border" style="">
+		<div class="container text-center mt-3">
+			<h5>
+				Confused Where To Go?
+			</h5>
+			<h3>
+				Here's where our Red LettersRecently Travelled
+			</h3>
+			<h6>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod<br>
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			</h6>
+		</div>
+		<div class="container-fluid border" style="padding-bottom: 1.5rem">			
+            <div id="demo" class="carousel slide" data-ride="carousel">
+                <ul class="carousel-indicators " style="bottom: -2rem">
+                    @{
+                        var count1 = (decimal)ViewBag.count;
+                        var listC1 = decimal.Ceiling((decimal)count1 / (decimal)3);
+                        for (int i = 0; i < listC1; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <li data-target="#demo" data-slide-to=i class="active"></li>
+                            }
+                            else
+                            {
+                                <li data-target="#demo" data-slide-to=i></li>
+                            }
+
+                        }
+
+                    }
+
+                </ul>
+
+               
+                <div class="carousel-inner">
+
+                    @{
+                        var val = 0;
+                        var count =(decimal) ViewBag.count;
+                        var listC = decimal.Ceiling((decimal)count / (decimal)3);
+
+                        for (int i = 0; i < listC; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <div class="carousel-item active">
+
+                                    <div class="row ad-pad-trbl">
+                                      @for (; val < ViewBag.count && val < (3 * (i + 1)); val++)
+                                        {
+                                            <div class="col-sm-4">
+                                                <div class="col-item">
+                                                    <div class="photo" onclick="location.href='@Url.Action("PackCont","Home")?cont='+ViewBag.data[val].Destination_Name">
+                                                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                        <div> @ViewBag.data[val].Destination_Name</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+
+                            }
+
+                            else
+                            {
+                                <div class="carousel-item ">
+                                    <div class="row ad-pad-trbl">
+                                        @for (; val < ViewBag.count && val < (3 * (i + 1)); val++)
+                                        {
+                                        <div class="col-sm-4">
+                                            <div class="col-item">
+                                                <div class="photo">
+                                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                                                    <div> @ViewBag.data[val].Destination_Name</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        }
+                                    </div>
+                                </div>
+
+                            }
+
+
+                        }
+                    }
+
+                </div>
+
+                <div>
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+
+            </div>
+
+		</div>	
+	
+<div class="container text-center mt-5 mb-5">
+    <h5>
+        Let's find out who's planning as a
+    </h5>
+    <h3>
+        <b>
+            I am travelling as a..
+        </b>
+    </h3>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width:">
+                <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Dummy</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container border">
     <div class="container text-center border">
         <h2>
-            Here Dream become Real In A Second
+            Search Results for You
         </h2>
     </div>
     <div class="row" style="padding: 1rem">
-        <div class="col-sm-6">
-            Plan Your Tour
-        </div>
         <div class="col-sm-3">
-            <div class="input-group">
-                <input type="text" class="form-control form-control-sm" placeholder="Search" style="border-right: none">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary btn-sm" type="button" style="background-color: transparent; border: 1px solid #CED4DA; border-left: none;">
-                        <img src="assets\style\img\search.png" style="height: 0.8rem; width: 0.8rem">
-                    </button>
+            Plan Your Tour Date :
+        </div>
+        <div class="col-sm-6">
+            <!-- 				<div class="input-group">
+                                <input type="text" class="form-control form-control-sm" placeholder="Search" style="border-right: none">
+                                <div class="input-group-append">
+                                    <button class="btn btn-secondary btn-sm" type="button" style="background-color: transparent; border: 1px solid #CED4DA; border-left: none;">
+                                        <img src="assets\style\img\search.png" style="height: 0.8rem; width: 0.8rem">
+                                    </button>
+                                </div>
+                            </div>	 -->
+            <div class="row">
+                <div class="col-sm-1">
+                    From
+                </div>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control form-control-sm clearfix" id="pwd" placeholder="Enter Date" name="date">
+                </div>
+                <div class="col-sm-1">
+                    To
+                </div>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control form-control-sm clearfix" id="pwd" placeholder="Enter Date" name="date">
                 </div>
             </div>
         </div>
         <div class="col-sm-3">
             <select class="form-control form-control-sm ">
-                <option>OPTION 1</option>
+                <option>Sort by: Recommended</option>
                 <option>OPTION 2</option>
                 <option>OPTION 3</option>
                 <option>OPTION 4</option>
@@ -39,35 +206,32 @@
 
     <div class="row">
         <div class="col-sm-4 " style="padding: 0; border-top: 0.1rem solid #DEE2E6; ">
-            <div class="mt-3" style="padding-left: 15px; padding-right: 15px">
-                <h6>Type Of Destination</h6>
-                <form class="">
-                    <div class="custom-control custom-checkbox ">
-                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
-                        <br>
-                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
-                    </div>
-                </form>
-            </div>
-            <hr style="border-top: 0.1rem solid #DEE2E6; ">
+            <!-- 				<div class="mt-3" style="padding-left: 15px; padding-right: 15px">
+                                <h6>Type Of Destination</h6>
+                                <form class="">
+                                    <div class="custom-control custom-checkbox ">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                                        <label class="custom-control-label" for="customCheck">Country Combo</label>
+                                        <br>
+                                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                                        <label class="custom-control-label" for="customCheck">Single Country</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <hr style="border-top: 0.1rem solid #DEE2E6; "> -->
 
             <div style="padding-left: 15px; padding-right: 15px">
-                <h6>Duration</h6>
+                <h6>Budget</h6>
                 <form class="">
                     <div class="custom-control custom-checkbox ">
                         <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
+                        <label class="custom-control-label" for="customCheck">Economy</label>
                         <br>
                         <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
+                        <label class="custom-control-label" for="customCheck">Standard</label>
                         <br>
                         <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
-                        <br>
-                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
+                        <label class="custom-control-label" for="customCheck">Luxury</label>
                     </div>
                 </form>
             </div>
@@ -83,52 +247,69 @@
 
             <hr style="border-top: 0.1rem solid #DEE2E6; ">
 
-            <div style="padding-left: 15px; padding-right: 15px">
-                <h6>Hotel Rating</h6>
-                <span class="fa fa-star" id="star1" onclick="add(this,1)"></span>
-                <span class="fa fa-star" id="star2" onclick="add(this,2)"></span>
-                <span class="fa fa-star" id="star3" onclick="add(this,3)"></span>
-                <span class="fa fa-star" id="star4" onclick="add(this,4)"></span>
-                <span class="fa fa-star" id="star5" onclick="add(this,5)"></span>
+            <!-- 			<div style="padding-left: 15px; padding-right: 15px">
+                                <h6>Hotel Rating</h6>
+                                    <span class="fa fa-star" id="star1" onclick="add(this,1)"></span>
+                                    <span class="fa fa-star" id="star2" onclick="add(this,2)"></span>
+                                    <span class="fa fa-star" id="star3" onclick="add(this,3)"></span>
+                                    <span class="fa fa-star" id="star4" onclick="add(this,4)"></span>
+                                    <span class="fa fa-star" id="star5" onclick="add(this,5)"></span>
+                            </div>
+
+                            <hr style="border-top: 0.1rem solid #DEE2E6; "> -->
+
+            <div class="mb-3" style="padding-left: 15px; padding-right: 15px">
+                <h6>Duration</h6>
+                <form class="">
+                    <div class="custom-control custom-checkbox ">
+                        <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">1-3 Days</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">4-6 Days</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">7-11 Days</label>
+                        <br>
+                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
+                        <label class="custom-control-label" for="customCheck">12 or More Days</label>
+                    </div>
+                </form>
             </div>
 
             <hr style="border-top: 0.1rem solid #DEE2E6; ">
 
             <div class="mb-3" style="padding-left: 15px; padding-right: 15px">
-                <h6>Inclusion</h6>
+                <h6>Narrow Your Destination</h6>
                 <form class="">
                     <div class="custom-control custom-checkbox ">
                         <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
+                        <label class="custom-control-label" for="customCheck">Bangkok</label>
                         <br>
                         <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
+                        <label class="custom-control-label" for="customCheck">Phuket</label>
                         <br>
                         <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
-                        <br>
-                        <input type="checkbox" class="custom-control-input " id="customCheck" name="example1">
-                        <label class="custom-control-label" for="customCheck">checkbox</label>
+                        <label class="custom-control-label" for="customCheck">Pattaya</label>
                     </div>
                 </form>
             </div>
         </div>
         <div class="col-sm-8 border">
-            <div class="row mt-3 mb-3">
-                
-                @for (int i = 0; i < Model.Count(); i += 2)
+            <div class="row mt-3 mb-3" style="overflow:auto;">
+
+                @for (int i = 1; i < Model.Count(); i += 2)
                 {
                     <div class="col-sm-6">
-                        @Html.Partial("packageView",Model.ElementAt(i))
+                        @Html.Partial("packageView", Model.ElementAt(i - 1))
                     </div>
                     <div class="col-sm-6">
-                       @Html.Partial("packageView",Model.ElementAt(++i))
+                        @Html.Partial("packageView", Model.ElementAt(i))
                     </div>
                 }
             </div>
         </div>
     </div>
 </div>
-	</div>
 
 
