@@ -26,20 +26,29 @@ namespace rlhTest.Controllers
         public ActionResult AllPackages()
         {
             connectClass connect = new connectClass();
-            ViewBag.data = connect.GetAllContDest().ToList();
-            ViewBag.count = connect.GetAllContDest().ToList().Count();
+            List<cont_destination_master> cont = connect.GetAllContDest().ToList();
+
+            ViewBag.count = cont.Count();
+            ViewBag.data = cont;
+            Filters fl = new Filters();
+            ViewBag.extra = fl;
             return View(connect.GetAllPackages().ToList());
         }
 
         public ActionResult PackagesByKey(string str)
         {
             connectClass connect = new connectClass();
+            ViewBag.data = str;
+            Filters fl = new Filters();
+            ViewBag.extra = fl;
             return View(connect.GetKeyPackage(str));
         }
 
         public ActionResult PackagesByDest(string str)
         {
             connectClass connect = new connectClass();
+            Filters fl = new Filters();
+            ViewBag.extra = fl;
             return View(connect.GetDestAllPack(str));
         }
 
@@ -71,24 +80,54 @@ namespace rlhTest.Controllers
 
         public ActionResult PackCont(string cont)
         {
-
             connectClass conn = new connectClass();
             ViewBag.data = cont;
+            Filters filters = new Filters();
+            ViewBag.extra = filters;
             return View(conn.GetPackByCont(cont));
-
-
         }
 
         public ActionResult PackCount(int person)
         {
             connectClass conn = new connectClass();
-            ViewBag.data = conn.GetPackByCount(person);
-            ViewBag.data1 = conn.GetPackByCount(person).ToList();
-            ViewBag.count = conn.GetPackByCount(person).ToList().Count();
-            ViewBag.extra = new Filters();
-            return View(conn.GetPackByCount(person).ToList());
+            List<package_master> pack = conn.GetPackByCount(person).ToList();
+            ViewBag.count = pack.Count();
+            Filters fl = new Filters();
+            fl.person = person;
+            ViewBag.extra = fl;
+            ViewBag.Person = person;
+            return View(pack);
         }
 
+        [System.Web.Http.HttpPost]
+        public ActionResult FiltersApply(Filters filter)
+        { 
+            ViewBag.filter = filter;
+            FilterHelper helper = new FilterHelper();
+            List<package_master>intermedate = helper.packFilter(filter);
+            ViewBag.count = intermedate.Count();
+            return View(intermedate.ToList());
+        }
+
+        [System.Web.Http.HttpPost]
+        public ActionResult FiltersApplyCont(Filters filter)
+        {
+            ViewBag.filter = filter;
+            FilterHelper helper = new FilterHelper();
+            List<package_master> intermedate = helper.packFilterCont(filter);
+            ViewBag.count = intermedate.Count();
+            return View(intermedate.ToList());
+        }
+
+        [System.Web.Http.HttpPost]
+        public ActionResult FiltersApplyKey(Filters filter)
+        {
+            ViewBag.filter = filter;
+            FilterHelper helper = new FilterHelper();
+            List<package_master> intermedate = helper.packFilterKey(filter);
+            ViewBag.count = intermedate.Count();
+            return View(intermedate.ToList());
+        }
 
         ////public ActionResult VisaFree(sbyte visa)
         ////{
@@ -130,7 +169,7 @@ namespace rlhTest.Controllers
         /// The list of the Partial View 
         /// </summary>
 
-           // public PartialViewResult
+        // public PartialViewResult
 
         public PartialViewResult packViewIndex()
         {
@@ -152,6 +191,19 @@ namespace rlhTest.Controllers
             Filters fl = new Filters();
             return PartialView(fl);
         }
+
+        public PartialViewResult contFilterView()
+        {
+            Filters fl = new Filters();
+            return PartialView(fl);
+        }
+
+        public PartialViewResult keyFilterView()
+        {
+            Filters fl = new Filters();
+            return PartialView(fl);
+        }
+
 
     }
 }

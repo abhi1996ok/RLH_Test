@@ -1,9 +1,7 @@
 ﻿@model rlhTest.Models.HelperModel.Filters
-
-
 <div class="mt-3" style="padding-left: 15px; padding-right: 15px">
 
-    @using (Html.BeginForm("FiltersApply", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("FiltersApplyCont", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {<h6>Type Of Destination</h6>
 
         <div class="custom-control custom-checkbox ">
@@ -12,7 +10,7 @@
             <br />
             @Html.CheckBoxFor(model => model.single)
             <lable>Single Country</lable>
-            @Html.HiddenFor(model => model.person, new { value = ViewBag.Person })
+            @Html.HiddenFor(model => model.cont, new { value = ViewBag.data })
             <br />
 
         </div>
@@ -66,8 +64,8 @@
 <hr style="border-top: 0.1rem solid #DEE2E6; ">-->
 
 <div style="padding-left: 15px; padding-right: 15px">
-    
-    
+
+
 </div>
 
 <hr style="border-top: 0.1rem solid #DEE2E6; ">

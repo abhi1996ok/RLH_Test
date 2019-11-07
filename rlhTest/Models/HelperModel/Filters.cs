@@ -20,6 +20,9 @@ namespace rlhTest.Models.HelperModel
         public bool custom2 { get; set; }
         public bool custom3 { get; set; }
         public bool custom4 { get; set; }
+        public int person { get; set; }
+        public string cont { get; set; }
+        public string word { get; set; }
 
 
     }

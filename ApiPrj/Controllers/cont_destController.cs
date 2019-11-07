@@ -32,9 +32,16 @@ namespace ApiPrj.Controllers
         public ActionResult GetPackCont(string contName)
         {
             var id = db.cont_destination_master.Where(s => s.Destination_Name == contName).ToList().Select(e => e.C_Co_DM_id).ToList().FirstOrDefault();
-            var pack = db.package_dest_master.Where(f => f.C_Co_DM_id == id).Include(e=>e.package_master).ToList();
+            var pack = db.package_dest_master.Where(f => f.C_Co_DM_id == id).Include(e=>e.package_master).Distinct().ToList();
+            
             PackageMaster packageMaster = new PackageMaster();
-            return Json(packageMaster.PackConvter2(pack.ToList()),JsonRequestBehavior.AllowGet);
+            List<PackageMaster> data = packageMaster.PackConvter2(pack.ToList());
+
+            var objs = (from c in data
+                        orderby c.C_PM_id
+                        select c).GroupBy(g => g.C_PM_id).Select(x => x.FirstOrDefault());
+
+            return Json(objs.ToList(),JsonRequestBehavior.AllowGet);
         }
     }
 }

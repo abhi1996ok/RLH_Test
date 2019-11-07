@@ -50,7 +50,7 @@ namespace ApiPrj.Controllers
             }
             else
             {
-                List<package_master> packages = db.package_master.Where(e => e.Booking_Count != 0).ToList();
+                List<package_master> packages = db.package_master.Where(e => e.Booking_Count == 1).ToList();
                 PackageMaster package = new PackageMaster();
                 return Json(package.PackConvter(packages), JsonRequestBehavior.AllowGet);
 

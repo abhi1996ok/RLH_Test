@@ -1,10 +1,9 @@
-﻿@model List <rlhTest.Models.DataModel.package_master>
+﻿@model List<rlhTest.Models.DataModel.package_master>
 
 @{
-    ViewBag.Title = "PackCount";
+    ViewBag.Title = "FiltersApplyKey";
     Layout = "~/Views/Shared/_home.cshtml";
 }
-
 <div class="container-fluid border" style="">
     <div class="container text-center mt-3">
         <h5>
@@ -167,7 +166,7 @@
 
         </div>
     </div>
-    
+
 
     <div class="container border">
         <div class="container text-center border">
@@ -218,28 +217,31 @@
 
         <div class="row">
             <div class="col-sm-4 " style="padding: 0; border-top: 0.1rem solid #DEE2E6; ">
-               @Html.Partial("filterView", (rlhTest.Models.HelperModel.Filters)ViewBag.extra )
+                @Html.Partial("keyFilterView", (rlhTest.Models.HelperModel.Filters)ViewBag.filter)
 
             </div>
             <div class="col-sm-8 border">
                 <div class="row mt-3 mb-3" style="overflow:auto;">
 
                     @for (int i = 1; i <= Model.Count(); i += 2)
-                     {
+                    {
                         <div class="col-sm-6">
                             @Html.Partial("packageView", Model.ElementAt(i - 1))
                         </div>
-                        if(i<Model.Count())
+
+                        if (i < Model.Count())
                         {
                             <div class="col-sm-6">
-                            @Html.Partial("packageView", Model.ElementAt(i))
-                           </div>
+                                @Html.Partial("packageView", Model.ElementAt(i))
+                            </div>
+
                         }
-                        
-                     }
+
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 

@@ -257,6 +257,7 @@
       <DependentUpon>database.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HelperModel\DestinationMaster.cs" />
+    <Compile Include="Models\HelperModel\FilterHelper.cs" />
     <Compile Include="Models\HelperModel\Filters.cs" />
     <Compile Include="Models\HelperModel\PackageMaster.cs" />
     <Compile Include="Models\HelperModel\packConnect.cs" />
@@ -331,6 +332,11 @@
     <Content Include="Views\Home\PackCont.cshtml" />
     <Content Include="Views\Home\PackCount.cshtml" />
     <Content Include="Views\Home\filterView.cshtml" />
+    <Content Include="Views\Home\FiltersApply.cshtml" />
+    <Content Include="Views\Home\contFilterView.cshtml" />
+    <Content Include="Views\Home\FiltersApplyCont.cshtml" />
+    <Content Include="Views\Home\FiltersApplyKey.cshtml" />
+    <Content Include="Views\Home\keyFilterView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Apis\" />

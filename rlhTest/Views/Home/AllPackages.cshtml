@@ -180,7 +180,7 @@
 
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <div class="card" style="width:">
+                                    <div class="card" style="width:" onclick="location.href='@Url.Action("PackCount","Home", new {person = 1 })'">
                                         <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
                                         <div class="card-body">
                                             <h4 class="card-title text-center">SOLO</h4>
@@ -188,7 +188,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <div class="card" style="width:">
+                                    <div class="card" style="width:"onclick="location.href='@Url.Action("PackCount","Home", new {person = 2 })'">
                                         <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
                                         <div class="card-body">
                                             <h4 class="card-title text-center">COUPLE</h4>
@@ -196,7 +196,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <div class="card" style="width:">
+                                    <div class="card" style="width:" onclick="location.href='@Url.Action("PackCount","Home", new {person = 5 })'">
                                         <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
                                         <div class="card-body">
                                             <h4 class="card-title text-center">FAMILY</h4>
@@ -204,7 +204,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <div class="card" style="width:">
+                                    <div class="card" style="width:" onclick="location.href='@Url.Action("PackCount","Home", new {person = 8 })'">
                                         <img class="card-img-top" src="http://placehold.it/350x260" alt="Card image" style="width:100%">
                                         <div class="card-body">
                                             <h4 class="card-title text-center">GROUP</h4>
@@ -263,21 +263,25 @@
 
                                                                         <div class="row">
                                                                             <div class="col-sm-4 " style="padding: 0; border-top: 0.1rem solid #DEE2E6; ">
-                                                                                	@Html.Partial("filterView")			
+                                                                                	@Html.Partial("filterView",(rlhTest.Models.HelperModel.Filters)ViewBag.extra)			
 
                                                                             </div>
                                                                                         <div class="col-sm-8 border">
                                                                                             <div class="row mt-3 mb-3" style="overflow:auto;">
 
-                                                                                                @for (int i = 1; i < Model.Count(); i += 2)
-                                                                                                {
+                                                                                                @for (int i = 1; i <= Model.Count(); i += 2)
+                                                                                                 {
                                                                                                     <div class="col-sm-6">
                                                                                                         @Html.Partial("packageView", Model.ElementAt(i - 1))
                                                                                                     </div>
-                                                                                                    <div class="col-sm-6">
+                                                                                                    if (i < Model.Count)
+                                                                                                    {
+                                                                                                          <div class="col-sm-6">
                                                                                                         @Html.Partial("packageView", Model.ElementAt(i))
-                                                                                                    </div>
-                                                                                                }
+                                                                                                         </div>
+                                                                                                    }
+                                                                                                  
+                                                                                                 }
                                                                                             </div>
                                                                                         </div>
                                                                         </div>
